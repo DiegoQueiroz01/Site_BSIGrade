@@ -1,0 +1,56 @@
+#login{
+    background: linear-gradient(15deg, rgb(0, 0, 0) 45%, rgb(255, 250, 230) 115%) no-repeat fixed; /*Define a cor de fundo da página de login e cria um degradê entre as cores.*/
+}
+.text-login{
+    margin-top: 0%; /*Distância da margem superior do texto.*/
+    color: white; /*cor do texto.*/
+    text-align: center; /*centralização do texto.*/
+    font-size: 2rem; /*Tamanho do texto.*/
+    font-weight: 600; /*Intensidade do negrito.*/
+}
+.logo-SI{
+    filter: invert(100%); /*Inverte a cor da logo.*/
+    margin-top: 2%;
+    margin-left: auto; /*Define a distância da margem automáticamente.*/
+    margin-right: auto;
+    height: auto; /*Define a altura.*/
+    width: 50px; /*Define a largura.*/
+}
+.logo-SI img{
+    height: auto; /*Define a altura.*/
+    width: 140px; /*Define a largura.*/
+}
+.forms {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Isso centraliza tudo horizontalmente */
+    width: 100%;
+}
+.forms .mb-3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.form-NMatricula {
+    text-align: center; /* Garante que o texto do label fique centralizado */
+    color: white;
+    font-weight: 500;
+    margin-bottom: 10px; /* Um pequeno espaço entre o label e o input */
+    display: block; /* Garante que o label ocupe a linha para aceitar alinhamento */
+}
+.matricula {
+    border-radius: 8px;
+    height: 40px;
+    width: 90%; /* Usa porcentagem para não quebrar em telas de celular*/
+    max-width: 500px; /* Limita o tamanho máximo para telas grandes*/
+    text-align: center; /* Opcional: centraliza o texto digitado dentro do input */
+}
+.button-enter{
+    margin-top: 10px; /*Define a distância da margem superior do botão.*/
+    margin-bottom: 10px; /*Define a distância da margem inferior do botão.*/
+    display: flex; /*Define o tipo de exibição do botão.*/
+    justify-content: center; /*Centraliza o conteúdo do botão.*/
+    margin-left: auto;
+    margin-right: auto;
+}
