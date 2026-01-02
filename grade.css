@@ -78,6 +78,8 @@
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     transition: all 0.2s ease;
     cursor: pointer;
+    cursor: pointer; /* Indica que o elemento é clicável */
+    user-select: none; /* Evita que o texto fique azul/selecionado ao clicar várias vezes */
 }
 
 /* Efeito ao passar o mouse na matéria */
@@ -99,4 +101,19 @@
 /* Opcional: Estilo para a matéria que você está com o mouse em cima */
 .materia-focada {
     border-left-color: #0d6efd !important; /* Azul forte */
+}
+/* Classe para matéria concluída */
+.materia-concluida {
+    background-color: #d4edda !important; /* Verde claro */
+    border-left-color: #28a745 !important; /* Borda verde forte */
+    color: #155724 !important;            /* Texto verde escuro */
+    text-decoration: line-through;       /* Riscado (opcional) */
+    opacity: 0.8;                        /* Fica levemente mais clara */
+}
+
+/* Adicionando um ícone de "check" via CSS (opcional) */
+.materia-concluida::after {
+    content: " ✓";
+    font-weight: bold;
+    float: right;
 }
