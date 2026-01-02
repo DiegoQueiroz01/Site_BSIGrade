@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - BSI</title>
     <link rel="stylesheet" href="/indexSTYLE.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body id="login">
     <main>
@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col">
                     <div class="logo-SI">
-                        <img src="/Imagens/LogoSI.png" alt="" sizes="" srcset="">
+                        <img src="/Imagens/LogoSI.png" alt="Logo SI">
                     </div>
                 </div>
             </div>
@@ -22,20 +22,47 @@
             <div class="row">
                 <div class="col">
                     <div class="text-login">
-                        <p>BACHARELADO EM SISTEMA DE INFORMAÇÃO</p>
+                        <p>BACHARELADO EM SISTEMAS DE INFORMAÇÃO</p>
                     </div>
                 </div>
             </div>
         </div>
-        <form class="forms">
+
+        <div class="forms container" style="max-width: 400px;">
             <div class="mb-3">
-                <label for="examploNumerodeMatricula" class="form-NMatricula">Informe seu número de matrícula</label>
-                <input type="text" class="matricula" id="examploNumerodeMatricula" aria-describedby="numeroHelp">
+                <label for="examploNumerodeMatricula" class="form-label text-white">Informe seu número de matrícula</label>
+                <input type="text" class="form-control" id="examploNumerodeMatricula" placeholder="Digite aqui sua matrícula">
             </div>
-            <div class="button-enter">
-                <button type="submit" class="btn btn-primary">Entrar</button>
+            <div class="button-enter text-center">
+                <button type="button" onclick="validarELogar()" class="btn btn-primary w-100">Entrar</button>
             </div>
-        </form>
+        </div>
     </main>
+
+    <script>
+        function validarELogar() {
+            // Pega o valor do input pelo ID
+            const inputMatricula = document.getElementById('examploNumerodeMatricula').value.trim();
+
+            if (inputMatricula === "") {
+                alert("Por favor, informe seu número de matrícula!");
+                return;
+            }
+
+            // 1. Salva a matrícula no LocalStorage para a página da grade usar
+            localStorage.setItem('matricula_logada', inputMatricula);
+
+            // 2. Redireciona para a página da grade
+            // Certifique-se de que o nome do arquivo abaixo seja EXATAMENTE o nome do seu arquivo da grade
+            window.location.href = 'grade.html'; 
+        }
+
+        // Bônus: Permitir apertar "Enter" no teclado para logar
+        document.getElementById('examploNumerodeMatricula').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                validarELogar();
+            }
+        });
+    </script>
 </body>
 </html>
