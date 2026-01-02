@@ -1,4 +1,102 @@
 #grade{
     background: linear-gradient(15deg, rgb(0, 0, 0) 45%, rgb(255, 250, 230) 115%) no-repeat fixed; /*Define a cor de fundo da página de login e cria um degradê entre as cores.*/
 }
+/* Título da Página */
+.titulo-grade {
+    color: white;
+    text-align: center;
+    margin: 30px 0;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
 
+/* --- CONTAINER GERAL (O TRILHO HORIZONTAL) --- */
+.grade-scroll {
+    display: flex;           /* Coloca os semestres um ao lado do outro */
+    overflow-x: auto;        /* Permite rolar para o lado se não couber na tela */
+    gap: 20px;               /* Espaço entre as colunas dos semestres */
+    padding: 20px;
+    padding-bottom: 40px;    /* Espaço extra para a barra de rolagem não colar */
+    
+    /* Estilização da barra de rolagem (Scrollbar) para ficar bonita */
+    scrollbar-width: thin;
+    scrollbar-color: #007bff #222;
+}
+
+/* Customização da barra de rolagem no Chrome/Safari */
+.grade-scroll::-webkit-scrollbar {
+    height: 10px;
+}
+.grade-scroll::-webkit-scrollbar-track {
+    background: #222;
+    border-radius: 5px;
+}
+.grade-scroll::-webkit-scrollbar-thumb {
+    background-color: #007bff;
+    border-radius: 5px;
+}
+
+/* --- A COLUNA DO SEMESTRE --- */
+.semestre-coluna {
+    min-width: 260px;        /* Largura fixa: garante que a coluna não fique espremida */
+    max-width: 260px;
+    background-color: rgba(255, 255, 255, 0.05); /* Fundo vidro translúcido */
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;  /* Garante que título fique em cima e matérias embaixo */
+    overflow: hidden;        /* Arredonda os cantos internos */
+}
+
+/* Cabeçalho da Coluna (Ex: "1º Semestre") */
+.semestre-titulo {
+    background: #2e0261;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.materias-wrapper {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espaço entre as matérias verticalmente */
+}
+
+/* --- O CARD DA MATÉRIA (O BLOCO) --- */
+.materia-card {
+    background-color: white;
+    color: #333;
+    padding: 15px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-left: 4px solid #ddd; /* Detalhe visual na esquerda */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+/* Efeito ao passar o mouse na matéria */
+.materia-card:hover {
+    transform: scale(1.03);       /* Aumenta levemente */
+    border-left-color: #007bff;   /* A borda lateral fica azul */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+/* Classe que será adicionada via JavaScript */
+.destaque-requisito {
+    background-color: #fff3cd !important; /* Fundo amarelo claro */
+    border-left-color: #ffc107 !important; /* Borda Laranja */
+    transform: scale(1.05); /* Aumenta um pouquinho */
+    box-shadow: 0 0 15px rgba(255, 193, 7, 0.6); /* Brilho externo */
+    font-weight: bold;
+    color: #856404;
+}
+
+/* Opcional: Estilo para a matéria que você está com o mouse em cima */
+.materia-focada {
+    border-left-color: #0d6efd !important; /* Azul forte */
+}
