@@ -117,3 +117,35 @@
     font-weight: bold;
     float: right;
 }
+.progress-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.progress-text {
+    color: white;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.progress-bar-bg {
+    background-color: #333;
+    border-radius: 20px;
+    height: 15px;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.progress-bar-fill {
+    background: linear-gradient(90deg, #28a745, #85ff9e);
+    height: 100%;
+    width: 0%; /* Começa em 0 */
+    transition: width 0.5s ease-in-out; /* Animação suave ao encher */
+    box-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
+}
