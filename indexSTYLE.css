@@ -26,6 +26,14 @@
     align-items: center; /* Isso centraliza tudo horizontalmente */
     width: 100%;
 }
+.form-select{
+    margin-top: 20px; /* Espaço acima do seletor */
+    margin-bottom: 20px; /* Espaço abaixo do seletor */
+    width: 90%; /* Usa porcentagem para não quebrar em telas de celular*/
+    max-width: 400px; /* Limita o tamanho máximo para telas grandes*/
+    margin-left: auto;
+    margin-right: auto;
+}
 .forms .mb-3 {
     display: flex;
     flex-direction: column;

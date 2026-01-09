@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - BSI</title>
+    <title>Login</title>
     <link rel="stylesheet" href="indexSTYLE.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -22,12 +22,21 @@
             <div class="row">
                 <div class="col">
                     <div class="text-login">
-                        <p>BACHARELADO EM SISTEMAS DE INFORMAÇÃO</p>
+                        <p>INSTITUTO FEDERAL DE EDUCAÇÃO, CIÊNCIA E TECNOLOGIA DA BAHIA</p>
+                        <p>CAMPUS VITÓRIA DA CONQUISTA</p>
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- Seletor de curso -->
+        <select class="form-select" aria-label="Default select example">
+            <option selected>Selecione seu curso</option>
+            <option value="1">Bacharelado em Sistemas de Informação</option>
+            <option value="2">Bacharelado em Engenharia Ambiental</option>
+        </select>
+
+        <!-- Formulário de Login -->
         <div class="forms container" style="max-width: 400px;">
             <div class="mb-3">
                 <label for="examploNumerodeMatricula" class="form-label text-white">Informe seu número de matrícula</label>
