@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col">
                     <div class="logo-SI">
-                        <img src="Imagens/LogoSI.png" alt="Logo SI">
+                        <img src="Imagens/IFBA.png" alt="Logo SI">
                     </div>
                 </div>
             </div>
@@ -52,6 +52,12 @@
         function validarELogar() {
             // Pega o valor do input pelo ID
             const inputMatricula = document.getElementById('examploNumerodeMatricula').value.trim();
+            // Validação simples: Verifica se o campo não está vazio
+            const inputCurso = document.querySelector('.form-select').value;
+            if (inputCurso === "Selecione seu curso") {
+                alert("Por favor, selecione seu curso!");
+                return;
+            }
 
             if (inputMatricula === "") {
                 alert("Por favor, informe seu número de matrícula!");
