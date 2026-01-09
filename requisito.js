@@ -1,8 +1,9 @@
 // 1. CONFIGURAÇÃO DE USUÁRIO E PERSISTÊNCIA
 const matriculaAtiva = localStorage.getItem('matricula_logada');
+const cursoAtivo = localStorage.getItem('curso_selecionado');
 
 // Redireciona se não houver login
-if (!matriculaAtiva) {
+if (!matriculaAtiva && !cursoAtivo) {
     window.location.href = 'index.html'; 
 }
 
@@ -72,19 +73,40 @@ materias.forEach(materia => {
 
     // REQUISITOS (HOVER)
     materia.addEventListener('mouseenter', () => {
-        const idRequisito = materia.getAttribute('data-requisito');
+        const idRequisito = materia.getAttribute('requisito');
+        const idDesbloqueia = materia.getAttribute('desbloqueia');
+        const idPos = materia.getAttribute('pos');
+
         if (idRequisito) {
             idRequisito.split(' ').forEach(reqID => {
                 const elReq = document.getElementById(reqID.trim());
-                if (elReq) elReq.classList.add('destaque-requisito');
+                if (elReq) elReq.classList.add('requisito');
+            });
+        }
+        if (idDesbloqueia) {
+            idDesbloqueia.split(' ').forEach(posReqID => {
+                const elDesbloqueia = document.getElementById(posReqID.trim());
+                if (elDesbloqueia) elDesbloqueia.classList.add('desbloqueia');
+            });
+        }
+        if (idPos) {
+            idPos.split(' ').forEach(posID => {
+                const elPos = document.getElementById(posID.trim());
+                if (elPos) elPos.classList.add('pos');
             });
         }
         materia.classList.add('materia-focada');
     });
 
     materia.addEventListener('mouseleave', () => {
-        document.querySelectorAll('.destaque-requisito').forEach(el => {
-            el.classList.remove('destaque-requisito');
+        document.querySelectorAll('.requisito').forEach(el => {
+            el.classList.remove('requisito');
+        });
+        document.querySelectorAll('.desbloqueia').forEach(el => {
+            el.classList.remove('desbloqueia');
+        });
+        document.querySelectorAll('.pos').forEach(el => {
+            el.classList.remove('pos');
         });
         materia.classList.remove('materia-focada');
     });

@@ -89,29 +89,13 @@
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 /* Classe que será adicionada via JavaScript */
-.requisito {
-    background-color: #fff8b6 !important; /* Fundo amarelo claro */
-    border-left-color: #5e5506 !important; /* Borda Laranja */
+.destaque-requisito {
+    background-color: #fff3cd !important; /* Fundo amarelo claro */
+    border-left-color: #ffc107 !important; /* Borda Laranja */
     transform: scale(1.05); /* Aumenta um pouquinho */
-    box-shadow: 0 0 15px rgba(255, 230, 7, 0.6); /* Brilho externo */
+    box-shadow: 0 0 15px rgba(255, 193, 7, 0.6); /* Brilho externo */
     font-weight: bold;
-    color: #383414;
-}
-.desbloqueia {
-    background-color: #d1ecf1 !important; /* Fundo azul claro */
-    border-left-color: #17a2b8 !important; /* Borda Azul */
-    transform: scale(1.05); /* Aumenta um pouquinho */
-    box-shadow: 0 0 15px rgba(23, 162, 184, 0.6); /* Brilho externo */
-    font-weight: bold;
-    color: #0c5460;
-}
-.pos {
-    background-color: #ffcba0 !important; /* Fundo laranja claro */
-    border-left-color: #ff8b07 !important; /* Borda laranja */
-    transform: scale(1.05); /* Aumenta um pouquinho */
-    box-shadow: 0 0 15px rgba(255, 139, 7, 0.6); /* Brilho externo */
-    font-weight: bold;
-    color: #856404; 
+    color: #856404;
 }
 
 /* Opcional: Estilo para a matéria que você está com o mouse em cima */
@@ -134,7 +118,7 @@
     float: right;
 }
 .progress-container {
-    background: rgba(255, 254, 254, 0.1);
+    background: rgba(255, 255, 255, 0.1);
     padding: 20px;
     border-radius: 15px;
     margin-bottom: 30px;
