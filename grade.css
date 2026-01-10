@@ -1,6 +1,9 @@
 #grade{
     background: linear-gradient(15deg, rgb(0, 0, 0) 45%, rgb(255, 250, 230) 115%) no-repeat fixed; /*Define a cor de fundo da página de login e cria um degradê entre as cores.*/
 }
+#gradeEA{
+        background: linear-gradient(15deg, rgb(32, 122, 5) 45%, rgb(255, 250, 230) 115%) no-repeat fixed; /*Define a cor de fundo da página de login e cria um degradê entre as cores.*/
+}
 /* Título da Página */
 .titulo-grade {
     color: white;
@@ -120,7 +123,7 @@
 }
 /* Classe para matéria concluída */
 .materia-concluida {
-    background-color: #d4edda !important; /* Verde claro */
+    background-color: #00ff3c !important; /* Verde claro */
     border-left-color: #28a745 !important; /* Borda verde forte */
     color: #155724 !important;            /* Texto verde escuro */
     text-decoration: line-through;       /* Riscado (opcional) */

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="grade.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body id="grade">
+<body id="gradeEA">
     <div class="container-fluid">
         <h2 class="titulo-grade">Bacharelado em Engenharia Ambiental</h2>
         
@@ -29,7 +29,7 @@
                 <div class="materias-wrapper">
                     <div class="materia-card" id="AVGA" desbloqueia="AL" pos="EDO CN FT HI HG GIBH RB SUE OU TE GTRS">Álgebra Vetorial e Geometria Analítica</div>
                     <div class="materia-card" id="BG" desbloqueia="MSA" pos="RB TAA TE GTRS SUE">Biologia Geral</div>
-                    <div class="materia-card" id="CAL1" desbloqueia="CAL2 F2" pos="PE CAL2 CAL3 F2 F3 FT HI HG GIBH RB SUE OU TE GTRS MC">Cálculo I</div>
+                    <div class="materia-card" id="CAL1" desbloqueia="CAL2 F2" pos="PE CAL3 F2 F3 FT HI HG GIBH RB SUE OU TE GTRS MC">Cálculo I</div>
                     <div class="materia-card" id="IEA">Introdução à Engenharia Ambiental</div>
                     <div class="materia-card" id="IEEA" desbloqueia="EA">Introdução ao Estudo de Ética Ambiental</div>
                     <div class="materia-card" id="LPGA">Leitura e Produção de Gêneros Acadêmicos</div>
@@ -46,9 +46,9 @@
                     <div class="materia-card" id="EA" requisito="BG">Ecologia Aplicada</div>
                     <div class="materia-card" id="EDA" requisito="IEEA">Educação Ambiental</div>
                     <div class="materia-card" id="EG">Expressões Gráficas</div>
-                    <div class="materia-card" id="F1" desbloqueia="MS">Física I</div>
+                    <div class="materia-card" id="F1" desbloqueia="MS F2 FE">Física I</div>
                     <div class="materia-card" id="QA" requisito="QG" desbloqueia="TAA GTRS PA QUA">Química Analítica</div>
-                    <div class="materia-card" id="ACEXI">ACEX I</div>
+                    <div class="materia-card" id="ACEXI" desbloqueia="ACEXII" pos="ACEXIII ACEXIV">ACEX I</div>
                 </div>
             </div>
 
@@ -75,7 +75,7 @@
                     <div class="materia-card" id="IP">Introdução a Programação</div>
                     <div class="materia-card" id="MSA" requisito="BG">Microbiologia Sanitária e Ambiental</div>
                     <div class="materia-card" id="PE">Probabilidade e Estatística</div>
-                    <div class="materia-card" id="ACEXII" requisito="ACEXI">ACEX II</div>
+                    <div class="materia-card" id="ACEXII" requisito="ACEXI" desbloqueia="ACEXIII" pos="ACEXIV">ACEX II</div>
                 </div>
             </div>
 
@@ -102,7 +102,7 @@
                     <div class="materia-card" id="RB" requisito="MSA FT" desbloqueia="SUE" pos="TE GTRS">Reatores Bioquímicos</div>
                     <div class="materia-card" id="SOC" requisito="">Sociologia</div>
                     <div class="materia-card" id="TOP" requisito="">Topografia</div>
-                    <div class="materia-card" id="ACEXIII" requisito="ACEXII">ACEX III</div>
+                    <div class="materia-card" id="ACEXIII" requisito="ACEXII" desbloqueia="ACEXIV">ACEX III</div>
                 </div>
             </div>
 
@@ -159,7 +159,7 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-        // Configurações do seu Firebase (conforme imagem e1302b)
+        // Configurações do Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyDHn3Dl-WbBR-JJ2f_uaxosGcWZvDFVKEc",
             authDomain: "grade-curricular-bsi.firebaseapp.com",

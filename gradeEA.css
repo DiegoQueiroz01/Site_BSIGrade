@@ -104,8 +104,8 @@
 }
 /* Classe para matéria concluída */
 .materia-concluida {
-    background-color: #d4edda !important; /* Verde claro */
-    border-left-color: #28a745 !important; /* Borda verde forte */
+    background-color: #04ff3e !important; /* Verde claro */
+    border-left-color: #003b0e !important; /* Borda verde forte */
     color: #155724 !important;            /* Texto verde escuro */
     text-decoration: line-through;       /* Riscado (opcional) */
     opacity: 0.8;                        /* Fica levemente mais clara */
