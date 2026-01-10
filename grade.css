@@ -1,7 +1,7 @@
-#grade{
+#BSI{
     background: linear-gradient(15deg, rgb(0, 0, 0) 45%, rgb(255, 250, 230) 115%) no-repeat fixed; /*Define a cor de fundo da página de login e cria um degradê entre as cores.*/
 }
-#gradeEA{
+#EAMB{
         background: linear-gradient(15deg, rgb(32, 122, 5) 45%, rgb(255, 250, 230) 115%) no-repeat fixed; /*Define a cor de fundo da página de login e cria um degradê entre as cores.*/
 }
 /* Título da Página */
@@ -96,15 +96,15 @@
     background-color: #fff8b6 !important; /* Fundo amarelo claro */
     border-left-color: #5e5506 !important; /* Borda Laranja */
     transform: scale(1.05); /* Aumenta um pouquinho */
-    box-shadow: 0 0 15px rgba(255, 230, 7, 0.6); /* Brilho externo */
+    box-shadow: 0 0 15px rgb(255, 239, 97); /* Brilho externo */
     font-weight: bold;
     color: #383414;
 }
 .desbloqueia {
-    background-color: #d1ecf1 !important; /* Fundo azul claro */
+    background-color: #7bebff !important; /* Fundo azul claro */
     border-left-color: #17a2b8 !important; /* Borda Azul */
     transform: scale(1.05); /* Aumenta um pouquinho */
-    box-shadow: 0 0 15px rgba(23, 162, 184, 0.6); /* Brilho externo */
+    box-shadow: 0 0 15px rgb(182, 245, 255); /* Brilho externo */
     font-weight: bold;
     color: #0c5460;
 }
@@ -112,7 +112,7 @@
     background-color: #ffcba0 !important; /* Fundo laranja claro */
     border-left-color: #ff8b07 !important; /* Borda laranja */
     transform: scale(1.05); /* Aumenta um pouquinho */
-    box-shadow: 0 0 15px rgba(255, 139, 7, 0.6); /* Brilho externo */
+    box-shadow: 0 0 15px rgb(255, 178, 90); /* Brilho externo */
     font-weight: bold;
     color: #856404; 
 }

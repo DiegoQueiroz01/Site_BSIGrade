@@ -12,7 +12,7 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <div class="logo-SI">
+                    <div class="logo-IFBA">
                         <img src="Imagens/IFBA.png" alt="Logo SI">
                     </div>
                 </div>
@@ -68,8 +68,11 @@
             localStorage.setItem('matricula_logada', inputMatricula);
 
             // 2. Redireciona para a página da grade
-            // Certifique-se de que o nome do arquivo abaixo seja EXATAMENTE o nome do seu arquivo da grade
-            window.location.href = 'grade.html'; 
+            if (inputCurso === "1") {
+                window.location.href = 'BSI.html';
+            } else if (inputCurso === "2") {
+                window.location.href = 'EAMB.html';
+            }
         }
 
         // Bônus: Permitir apertar "Enter" no teclado para logar

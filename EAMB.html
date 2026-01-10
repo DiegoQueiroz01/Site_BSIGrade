@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="grade.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body id="gradeEA">
+<body id="EAMB">
     <div class="container-fluid">
         <h2 class="titulo-grade">Bacharelado em Engenharia Ambiental</h2>
         
@@ -29,12 +29,12 @@
                 <div class="materias-wrapper">
                     <div class="materia-card" id="AVGA" desbloqueia="AL" pos="EDO CN FT HI HG GIBH RB SUE OU TE GTRS">Álgebra Vetorial e Geometria Analítica</div>
                     <div class="materia-card" id="BG" desbloqueia="MSA" pos="RB TAA TE GTRS SUE">Biologia Geral</div>
-                    <div class="materia-card" id="CAL1" desbloqueia="CAL2 F2" pos="PE CAL3 F2 F3 FT HI HG GIBH RB SUE OU TE GTRS MC">Cálculo I</div>
+                    <div class="materia-card" id="CAL1" desbloqueia="CAL2 F2" pos="PE CAL3 F2 F3 FT HI HG GIBH RB SUE OU TE GTRS MC PA">Cálculo I</div>
                     <div class="materia-card" id="IEA">Introdução à Engenharia Ambiental</div>
                     <div class="materia-card" id="IEEA" desbloqueia="EA">Introdução ao Estudo de Ética Ambiental</div>
                     <div class="materia-card" id="LPGA">Leitura e Produção de Gêneros Acadêmicos</div>
                     <div class="materia-card" id="MPC">Metodólogia de Pesquisa Científica</div>
-                    <div class="materia-card" id="QG" desbloqueia="QA ICM GEO" pos="TAA GTRS PA QUA PO RAD">Química Geral</div>
+                    <div class="materia-card" id="QG" desbloqueia="QA ICM GEO" pos="TAA GTRS PA QUA PO RAD PS">Química Geral</div>
                 </div>
             </div>
 
@@ -42,13 +42,13 @@
                 <div class="semestre-titulo">2º Semestre</div>
                 <div class="materias-wrapper">
                     <div class="materia-card" id="AL" requisito="AVGA" desbloqueia="EDO" pos="CN FT HI HG GIBH RB SUE OU TE GTRS">Álgebra Linear</div>
-                    <div class="materia-card" id="CAL2" requisito="CAL1" desbloqueia="MC CAL3 PE F3">Cálculo II</div>
+                    <div class="materia-card" id="CAL2" requisito="CAL1" desbloqueia="MC CAL3 PE F3" pos="PA">Cálculo II</div>
                     <div class="materia-card" id="EA" requisito="BG">Ecologia Aplicada</div>
                     <div class="materia-card" id="EDA" requisito="IEEA">Educação Ambiental</div>
-                    <div class="materia-card" id="EG">Expressões Gráficas</div>
-                    <div class="materia-card" id="F1" desbloqueia="MS F2 FE">Física I</div>
-                    <div class="materia-card" id="QA" requisito="QG" desbloqueia="TAA GTRS PA QUA">Química Analítica</div>
-                    <div class="materia-card" id="ACEXI" desbloqueia="ACEXII" pos="ACEXIII ACEXIV">ACEX I</div>
+                    <div class="materia-card" id="EG" desbloqueia="DAC">Expressões Gráficas</div>
+                    <div class="materia-card" id="F1" desbloqueia="MS F2 FE" pos="RM1 EC ECA F3 FT HG RB GIBH SUE TE GTRS">Física I</div>
+                    <div class="materia-card" id="QA" requisito="QG" desbloqueia="TAA GTRS PA QUA" pos="">Química Analítica</div>
+                    <div class="materia-card" id="ACEXI" desbloqueia="ACEXII" pos="ACEXIII ACEXIV ACEXV">ACEX I</div>
                 </div>
             </div>
 
@@ -57,25 +57,25 @@
                 <div class="materias-wrapper">
                     <div class="materia-card" id="CAL3" requisito="CAL2">Cálculo III</div>
                     <div class="materia-card" id="ECO">Economia</div>
-                    <div class="materia-card" id="FE" requisito="F1">Física Experimental</div>
-                    <div class="materia-card" id="F2" requisito="CAL1 F1" desbloqueia="F3 FT" desbloqueia="FT" pos="HI HG GIBH RB SUE TE GTRS OU">Física II</div>
+                    <div class="materia-card" id="FE" requisito="F1">Física Experimental I</div>
+                    <div class="materia-card" id="F2" requisito="CAL1 F1" desbloqueia="F3 FT" pos="HID HG GIBH RB SUE TE GTRS OU">Física II</div>
                     <div class="materia-card" id="HST">Higiene e Segurança do Trabalho</div>
-                    <div class="materia-card" id="MS" requisito="F1">Mecânica dos Sólidos</div>
-                    <div class="materia-card" id="MC" requisito="CAL2">Meteorologia e Climatologia</div>
+                    <div class="materia-card" id="MS" requisito="F1" desbloqueia="RM1" pos="EC ECA">Mecânica dos Sólidos</div>
+                    <div class="materia-card" id="MC" requisito="CAL2" desbloqueia="PA">Meteorologia e Climatologia</div>
                 </div>
             </div>
 
             <div class="semestre-coluna">
                 <div class="semestre-titulo">4º Semestre</div>
                 <div class="materias-wrapper">
-                    <div class="materia-card" id="EDO" requisito="CAL2 AL">Equações Diferenciais Ordinárias</div>
-                    <div class="materia-card" id="F3" requisito="F2">Física III</div>
+                    <div class="materia-card" id="EDO" requisito="CAL2 AL" desbloqueia="CN FT" pos="HG RB GIBH SUE TE">Equações Diferenciais Ordinárias</div>
+                    <div class="materia-card" id="F3" requisito="F2 CAL2">Física III</div>
                     <div class="materia-card" id="GEO" requisito="QG" desbloqueia="PS" pos="RAD">Geologia</div>
                     <div class="materia-card" id="ICM" requisito="QG">Introdução à Ciência dos Materiais</div>
-                    <div class="materia-card" id="IP">Introdução a Programação</div>
-                    <div class="materia-card" id="MSA" requisito="BG">Microbiologia Sanitária e Ambiental</div>
-                    <div class="materia-card" id="PE">Probabilidade e Estatística</div>
-                    <div class="materia-card" id="ACEXII" requisito="ACEXI" desbloqueia="ACEXIII" pos="ACEXIV">ACEX II</div>
+                    <div class="materia-card" id="IP" desbloqueia="CN DAC GEOP" pos="TOP">Introdução a Programação</div>
+                    <div class="materia-card" id="MSA" requisito="BG" desbloqueia="RB QUA TE" pos="SUE TAA">Microbiologia Sanitária e Ambiental</div>
+                    <div class="materia-card" id="PE" requisito="CAL2">Probabilidade e Estatística</div>
+                    <div class="materia-card" id="ACEXII" requisito="ACEXI" desbloqueia="ACEXIII" pos="ACEXIV ACEXV">ACEX II</div>
                 </div>
             </div>
 
@@ -84,66 +84,67 @@
                 <div class="materias-wrapper">
                     <div class="materia-card" id="ADM">Administração</div>
                     <div class="materia-card" id="CN" requisito="EDO IP">Cálculo Numérico</div>
-                    <div class="materia-card" id="DAC" requisito="">Desenho Auxiliado por Computador</div>
-                    <div class="materia-card" id="FT" requisito="F2" desbloqueia="HG RB" pos="GIBH SUE TE GTRS OU">Fenômenos de Transporte</div>
-                    <div class="materia-card" id="GEOP" requisito="">Geoprocessamento</div>
-                    <div class="materia-card" id="PS" requisito="">Poluição do Solo</div>
-                    <div class="materia-card" id="RM1" requisito="">Resistência dos Materiais I</div>
+                    <div class="materia-card" id="DAC" requisito="IP EG" desbloqueia="TOP">Desenho Auxiliado por Computador</div>
+                    <div class="materia-card" id="FT" requisito="F2 EDO" desbloqueia="HG RB" pos="GIBH SUE TE GTRS OU">Fenômenos de Transporte</div>
+                    <div class="materia-card" id="GEOP" requisito="IP">Geoprocessamento</div>
+                    <div class="materia-card" id="PS" requisito="GEO" desbloqueia="RAD">Poluição do Solo</div>
+                    <div class="materia-card" id="RM1" requisito="MS" desbloqueia="EC ECA">Resistência dos Materiais I</div>
                 </div>
             </div>
 
             <div class="semestre-coluna">
                 <div class="semestre-titulo">6º Semestre</div>
                 <div class="materias-wrapper">
-                    <div class="materia-card" id="EC" requisito="">Estabilidade das Construções</div>
-                    <div class="materia-card" id="ECA" requisito="">Estrutura de Concreto Armado</div>
-                    <div class="materia-card" id="HID" requisito="FT" desbloqueia="HG OU OH SUE" pos="GIBH">Hidráulica</div>
-                    <div class="materia-card" id="LDA" requisito="">Legislação e Direito Ambiental</div>
+                    <div class="materia-card" id="EC" requisito="RM1">Estabilidade das Construções</div>
+                    <div class="materia-card" id="ECA" requisito="RM1">Estrutura de Concreto Armado</div>
+                    <div class="materia-card" id="HID" requisito="FT" desbloqueia="HG OU OH SUE" pos="GIBH TE TAA">Hidráulica</div>
+                    <div class="materia-card" id="LDA" desbloqueia="AAIA GPA" pos="APA RAD">Legislação e Direito Ambiental</div>
                     <div class="materia-card" id="RB" requisito="MSA FT" desbloqueia="SUE" pos="TE GTRS">Reatores Bioquímicos</div>
-                    <div class="materia-card" id="SOC" requisito="">Sociologia</div>
-                    <div class="materia-card" id="TOP" requisito="">Topografia</div>
-                    <div class="materia-card" id="ACEXIII" requisito="ACEXII" desbloqueia="ACEXIV">ACEX III</div>
+                    <div class="materia-card" id="SOC">Sociologia</div>
+                    <div class="materia-card" id="TOP" requisito="DAC">Topografia</div>
+                    <div class="materia-card" id="ACEXIII" requisito="ACEXII" desbloqueia="ACEXIV" pos="ACEXV">ACEX III</div>
                 </div>
             </div>
 
             <div class="semestre-coluna">
                 <div class="semestre-titulo">7º Semestre</div>
                 <div class="materias-wrapper">
-                    <div class="materia-card" id="AAIA" requisito="">Análise e Avaliação de Impactos Ambientais</div>
-                    <div class="materia-card" id="GPA" requisito="">Gestão e Planejamento Ambiental</div>
-                    <div class="materia-card" id="HG" requisito="HI" desbloqueia="GIBH">Hidrologia Geral</div>
-                    <div class="materia-card" id="OH" requisito="">Obras Hidráulicas</div>
-                    <div class="materia-card" id="OU" requisito="">Operações Unitárias</div>
-                    <div class="materia-card" id="QUA">Qualidade da Água</div>
-                    <div class="materia-card" id="SUE" requisito="RB HI" desbloqueia="TE">Sistemas Urbanos de Esgoto</div>
-                    <div class="materia-card" id="ACEXIV" requisito="ACEXIII">ACEX IV</div>
+                    <div class="materia-card" id="AAIA" requisito="LDA" desbloqueia="APA RAD" pos="GTRS">Análise e Avaliação de Impactos Ambientais</div>
+                    <div class="materia-card" id="GPA" requisito="LDA" desbloqueia="APA">Gestão e Planejamento Ambiental</div>
+                    <div class="materia-card" id="HG" requisito="HID" desbloqueia="GIBH">Hidrologia Geral</div>
+                    <div class="materia-card" id="OH" requisito="HID">Obras Hidráulicas</div>
+                    <div class="materia-card" id="OU" requisito="HID">Operações Unitárias</div>
+                    <div class="materia-card" id="QUA" requisito="MSA QA">Qualidade da Água</div>
+                    <div class="materia-card" id="SUE" requisito="RB HID" desbloqueia="TE" pos="TAA">Sistemas Urbanos de Esgoto</div>
+                    <div class="materia-card" id="ACEXIV" requisito="ACEXIII" desbloqueia="ACEXV">ACEX IV</div>
                 </div>
             </div>
 
             <div class="semestre-coluna">
                 <div class="semestre-titulo">8º Semestre</div>
                 <div class="materias-wrapper">
-                    <div class="materia-card" id="APA">Auditoria e Perícia Ambiental</div>
+                    <div class="materia-card" id="APA" requisito="AAIA GPA">Auditoria e Perícia Ambiental</div>
                     <div class="materia-card" id="GIBH" requisito="HG">Gestão Integrada de Bacias Hidrográficas</div>
                     <div class="materia-card" id="OP1">Optativa I</div>
-                    <div class="materia-card" id="RAD" requisito="PS">Recuperação de Áreas Degradadas</div>
-                    <div class="materia-card" id="PA">Poluição Atmosférica</div>
-                    <div class="materia-card" id="TE">Tratamento de Efluentes</div>
+                    <div class="materia-card" id="RAD" requisito="PS AAIA">Recuperação de Áreas Degradadas</div>
+                    <div class="materia-card" id="PA" requisito="MC MS">Poluição Atmosférica</div>
+                    <div class="materia-card" id="TE" requisito="MSA SUE" desbloqueia="GTRS">Tratamento de Efluentes</div>
+                    <div class="materia-card" id="ACEXV" requisito="ACEXIV">ACEX V</div>
                 </div>
             </div>
 
             <div class="semestre-coluna">
                 <div class="semestre-titulo">9º Semestre</div>
                 <div class="materias-wrapper">
-                    <div class="materia-card" id="GTRS">Gestão e Tratamento de Resíduos Sólidos</div>
+                    <div class="materia-card" id="GTRS" requisito="TE QA MSA">Gestão e Tratamento de Resíduos Sólidos</div>
                     <div class="materia-card" id="OP2">Optativa II</div>
                     <div class="materia-card" id="TCC1">TCC I</div>
-                    <div class="materia-card" id="TAA">Tratamento e Abastecimento de Água</div>
+                    <div class="materia-card" id="TAA" requisito="QA">Tratamento e Abastecimento de Água</div>
                 </div>
             </div>
 
             <div class="semestre-coluna">
-                <div class="semestre-titulo">9º Semestre</div>
+                <div class="semestre-titulo">10º Semestre</div>
                 <div class="materias-wrapper">
                     <div class="materia-card" id="GTRS">Estágio Supervisionado</div>
                     <div class="materia-card" id="TCC2">TCC II</div>

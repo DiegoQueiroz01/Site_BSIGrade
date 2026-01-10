@@ -23,7 +23,7 @@ function validarELogar() {
 
     // 2. Redireciona para o arquivo da grade correta
     if (cursoSelecionado === "Bacharelado em Engenharia Ambiental") {
-        window.location.href = 'gradeEA.html';
+        window.location.href = 'EAMB.html';
     } 
     if (cursoSelecionado === "Bacharelado em Sistemas de Informação") {
         window.location.href = 'gradeBSI.html';

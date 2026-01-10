@@ -8,7 +8,7 @@
     font-size: 2rem; /*Tamanho do texto.*/
     font-weight: 600; /*Intensidade do negrito.*/
 }
-.logo-SI{
+.logo-IFBA{
     filter: invert(100%); /*Inverte a cor da logo.*/
     margin-top: 2%;
     margin-left: auto; /*Define a distância da margem automáticamente.*/
@@ -16,7 +16,7 @@
     height: auto; /*Define a altura.*/
     width: 10px; /*Define a largura.*/
 }
-.logo-SI img{
+.logo-IFBA img{
     height: auto; /*Define a altura.*/
     width: 140px; /*Define a largura.*/
 }
