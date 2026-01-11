@@ -9,7 +9,7 @@
 </head>
 <body id="BSI">
     <div class="container-fluid">
-        <h2 class="titulo-grade">Grade Curricular - BSI</h2>
+        <h2 class="titulo-grade">Bacharelado em Sistema de Informação</h2>
         
         <div class="container mt-4">
             <div class="progress-container">
@@ -27,10 +27,10 @@
             <div class="semestre-coluna">
                 <div class="semestre-titulo">1º Semestre</div>
                 <div class="materias-wrapper">
-                    <div class="materia-card" id="AP">Algoritmos e Programação</div>
+                    <div class="materia-card" id="AP" desbloqueia="LP1" pos="LP1 LP2 ED BD1 AMS WEB1 BD2 CA WEB2 SI PDS PDM ES GP QS IHM GG SAD">Algoritmos e Programação</div>
                     <div class="materia-card" id="LPGA">Linguagem e Produção de Gêneros Textuais</div>
                     <div class="materia-card" id="FSI">Fundamentos de Sistemas de Informação</div>
-                    <div class="materia-card" id="MD1">Matemática Discreta I</div>
+                    <div class="materia-card" id="MD1" desbloqueia="MD2 CALC1" pos="IA CA">Matemática Discreta I</div>
                     <div class="materia-card" id="ICC">Introdução à Ciência da Computação</div>
                     <div class="materia-card" id="IAC">Inglês Aplicado à Computação</div>
                 </div>
@@ -39,24 +39,24 @@
             <div class="semestre-coluna">
                 <div class="semestre-titulo">2º Semestre</div>
                 <div class="materias-wrapper">
-                    <div class="materia-card" id="LP1" data-requisito="AP">Linguagem de Programação I</div>
-                    <div class="materia-card" id="OAC">Organização e Arquitetura de Computadores</div>
+                    <div class="materia-card" id="LP1" requisito="AP" desbloqueia="LP2 ED" pos="LP2 ED BD1 AMS WEB1 CA PDS BD2 WEB2 PDM ES GP DDI QS IHM SAD GG">Linguagem de Programação I</div>
+                    <div class="materia-card" id="OAC" desbloqueia="SO" pos="PAR SI SD DDI GG">Organização e Arquitetura de Computadores</div>
                     <div class="materia-card" id="CES">Computador, Ética e Sociedade</div>
-                    <div class="materia-card" id="MD2" data-requisito="MD1">Matemática Discreta II</div>
-                    <div class="materia-card" id="CALC1" data-requisito="MD1">Cálculo Diferencial Aplicado à Computação</div>
-                    <div class="materia-card" id="ADM">Administração</div>
+                    <div class="materia-card" id="MD2" requisito="MD1" desbloqueia="IA">Matemática Discreta II</div>
+                    <div class="materia-card" id="CALC1" requisito="MD1" desbloqueia="CA">Cálculo Diferencial Aplicado à Computação</div>
+                    <div class="materia-card" id="ADM" desbloqueia="OSM EMP GP">Administração</div>
                 </div>
             </div>
 
             <div class="semestre-coluna">
                 <div class="semestre-titulo">3º Semestre</div>
                 <div class="materias-wrapper">
-                    <div class="materia-card" id="LP2" data-requisito="LP1">Linguagem de Programação II</div>
-                    <div class="materia-card" id="ED" data-requisito="LP1">Estrutura de Dados</div>
-                    <div class="materia-card" id="SO" data-requisito="OAC">Sistemas Operacionais</div>
+                    <div class="materia-card" id="LP2" requisito="LP1" desbloqueia="AMS WEB1 BD2 IA" pos="WEB1 PDS WEB2 PDM ES GP DDI QS IHM SAD GG">Linguagem de Programação II</div>
+                    <div class="materia-card" id="ED" requisito="LP1" desbloqueia="CA">Estrutura de Dados</div>
+                    <div class="materia-card" id="SO" requisito="OAC" desbloqueia="RC" pos="PAR SI SD DDI GG">Sistemas Operacionais</div>
                     <div class="materia-card" id="PE">Probabilidade e Estatística</div>
                     <div class="materia-card" id="DC">Direito Cibernético</div>
-                    <div class="materia-card" id="OSM" data-requisito="ADM">Organização, Sistemas e Metódos</div>
+                    <div class="materia-card" id="OSM" requisito="ADM">Organização, Sistemas e Metódos</div>
                 </div>
             </div>
 
@@ -64,12 +64,12 @@
                 <div class="semestre-titulo">4º Semestre</div>
                 <div class="materias-wrapper">
                     <div class="materia-card" id="MPC">Metodologia de Pesquisa Científica</div>
-                    <div class="materia-card" id="AMS">Análise e Modelagem de Sistemas</div>
-                    <div class="materia-card" id="BD1" data-requisito="LP1">Banco de Dados I</div>
-                    <div class="materia-card" id="RC" data-requisito="SO">Redes de Computadores</div>
-                    <div class="materia-card" id="WEB1" data-requisito="LP2">Programação para Web I</div>
-                    <div class="materia-card" id="EMP" data-requisito="ADM">Empreendedorismo</div>
-                    <div class="materia-card" id="ACEXI">ACEX I</div>
+                    <div class="materia-card" id="AMS" requisito="LP2" desbloqueia="PDS" pos="PDM ES GP DDI QS IHM GG">Análise e Modelagem de Sistemas</div>
+                    <div class="materia-card" id="BD1" requisito="LP1" desbloqueia="BD2 WEB2 SI">Banco de Dados I</div>
+                    <div class="materia-card" id="RC" requisito="SO" desbloqueia="PAR SI" pos="SD DDI GG">Redes de Computadores</div>
+                    <div class="materia-card" id="WEB1" requisito="LP2" desbloqueia="WEB2">Programação para Web I</div>
+                    <div class="materia-card" id="EMP" requisito="ADM">Empreendedorismo</div>
+                    <div class="materia-card" id="ACEXI" desbloqueia="ACEXII">ACEX I</div>
                 </div>
             </div>
 
@@ -77,38 +77,38 @@
                 <div class="semestre-titulo">5º Semestre</div>
                 <div class="materias-wrapper">
                     <div class="materia-card" id="ECON">Economia</div>
-                    <div class="materia-card" id="PDS" data-requisito="AMS">Processo de Desenvolvimento de Software</div>
-                    <div class="materia-card" id="CA" data-requisito="ED">Complexidade de Algoritmos</div>
-                    <div class="materia-card" id="BD2" data-requisito="BD1">Banco de Dados II</div>
-                    <div class="materia-card" id="PAR" data-requisito="RC">Projeto e Administração de Redes</div>
-                    <div class="materia-card" id="WEB2" data-requisito="WEB1">Programação para Web II</div>
-                    <div class="materia-card" id="ACEXII" data-requisito="ACEXI">ACEX II</div>
+                    <div class="materia-card" id="PDS" requisito="AMS" desbloqueia="PDM ES GP DDI" pos="QS IHM SAD GG">Processo de Desenvolvimento de Software</div>
+                    <div class="materia-card" id="CA" requisito="ED" >Complexidade de Algoritmos</div>
+                    <div class="materia-card" id="BD2" requisito="BD1">Banco de Dados II</div>
+                    <div class="materia-card" id="PAR" requisito="RC" desbloqueia="SD" pos="DDI">Projeto e Administração de Redes</div>
+                    <div class="materia-card" id="WEB2" requisito="WEB1 BD1">Programação para Web II</div>
+                    <div class="materia-card" id="ACEXII" requisito="ACEXI" desbloqueia="ACEXIII">ACEX II</div>
                 </div>
             </div>
 
             <div class="semestre-coluna">
                 <div class="semestre-titulo">6º Semestre</div>
                 <div class="materias-wrapper">
-                    <div class="materia-card" id="IA" data-requisito="LP2 MD2">Inteligência Artificial</div>
-                    <div class="materia-card" id="PDM" data-requisito="PDS">Programação para Dispositivos Móveis</div>
-                    <div class="materia-card" id="ES" data-requisito="PSD">Engenharia de Software</div>
-                    <div class="materia-card" id="SD" data-requisito="PAR">Sistemas Distribuídos</div>
-                    <div class="materia-card" id="SF" data-requisito="BD1 RC">Segurança da Informação</div>
-                    <div class="materia-card" id="GP" data-requisito="ADM PDS">Gestão de Projetos</div>
-                    <div class="materia-card" id="ACEXIII" data-requisito="ACEXII">ACEX III</div>
+                    <div class="materia-card" id="IA" requisito="LP2 MD2">Inteligência Artificial</div>
+                    <div class="materia-card" id="PDM" requisito="PDS">Programação para Dispositivos Móveis</div>
+                    <div class="materia-card" id="ES" requisito="PSD" desbloqueia="QS IHM">Engenharia de Software</div>
+                    <div class="materia-card" id="SD" requisito="PAR" desbloqueia="DDI">Sistemas Distribuídos</div>
+                    <div class="materia-card" id="SF" requisito="BD1 RC" desbloqueia="GG">Segurança da Informação</div>
+                    <div class="materia-card" id="GP" requisito="ADM PDS" desbloqueia="SAD GG">Gestão de Projetos</div>
+                    <div class="materia-card" id="ACEXIII" requisito="ACEXII" desbloqueia="ACEXIV">ACEX III</div>
                 </div>
             </div>
 
             <div class="semestre-coluna">
                 <div class="semestre-titulo">7º Semestre</div>
                 <div class="materias-wrapper">
-                    <div class="materia-card" id="DDI" data-requisito="PDS SD">Desenvolvimento Distribuído na Internet</div>
-                    <div class="materia-card" id="QS" data-requisito="ES">Qualidade de Software</div>
-                    <div class="materia-card" id="TCC1">Trabalho de Conclusão de Curso I</div>
-                    <div class="materia-card" id="IHM" data-requisito="ES">Interface Homem-Máquina</div>
-                    <div class="materia-card" id="SAD" data-requisito="GP">Sistema de Apoio à Decisão</div>
+                    <div class="materia-card" id="DDI" requisito="PDS SD">Desenvolvimento Distribuído na Internet</div>
+                    <div class="materia-card" id="QS" requisito="ES">Qualidade de Software</div>
+                    <div class="materia-card" id="TCC1" desbloqueia="TCC2">Trabalho de Conclusão de Curso I</div>
+                    <div class="materia-card" id="IHM" requisito="ES">Interface Homem-Máquina</div>
+                    <div class="materia-card" id="SAD" requisito="GP">Sistema de Apoio à Decisão</div>
                     <div class="materia-card" id="OP1">Optativa A</div>
-                    <div class="materia-card" id="ACEXIV" data-requisito="ACEXIII">ACEX IV</div>
+                    <div class="materia-card" id="ACEXIV" requisito="ACEXIII">ACEX IV</div>
                 </div>
             </div>
 
@@ -116,8 +116,8 @@
                 <div class="semestre-titulo">8º Semestre</div>
                 <div class="materias-wrapper">
                     <div class="materia-card" id="MA">Meio Ambiente</div>
-                    <div class="materia-card" id="GG" data-requisito="GP SF">Gestão e Governança de TI</div>
-                    <div class="materia-card" id="TCC2" data-requisito="TCC1">Trabalho de Conclusão de Curso II</div>
+                    <div class="materia-card" id="GG" requisito="GP SF">Gestão e Governança de TI</div>
+                    <div class="materia-card" id="TCC2" requisito="TCC1">Trabalho de Conclusão de Curso II</div>
                     <div class="materia-card" id="OP2">Optativa B</div>
                     <div class="materia-card" id="OP3">Optativa C</div>
                 </div>
