@@ -8,17 +8,26 @@
     font-size: 2rem; /*Tamanho do texto.*/
     font-weight: 600; /*Intensidade do negrito.*/
 }
-.logo-IFBA{
-    filter: invert(100%); /*Inverte a cor da logo.*/
-    margin-top: 2%;
-    margin-left: auto; /*Define a distância da margem automáticamente.*/
-    margin-right: auto;
-    height: auto; /*Define a altura.*/
-    width: 10px; /*Define a largura.*/
+.logo-IFBA {
+    margin-top: 6%;
+    width: 100%; /* Garante que o container da logo ocupe a largura toda */
+    display: flex;
+    justify-content: center; /* Centraliza a imagem horizontalmente */
 }
-.logo-IFBA img{
-    height: auto; /*Define a altura.*/
-    width: 140px; /*Define a largura.*/
+
+.logo-IFBA img {
+    height: auto;
+    width: 300px;
+    display: block; /* Remove espaços indesejados abaixo da imagem */
+}
+
+.text-login {
+    margin-top: 20px;
+    font-weight: bold; /* Opcional: deixa o texto mais visível como na logo */
+}
+
+.text-login p {
+    margin-bottom: 5px; /* Diminui o espaço entre as duas linhas de texto */
 }
 .forms {
     display: flex;
