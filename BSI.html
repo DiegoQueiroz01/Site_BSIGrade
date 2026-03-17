@@ -9,7 +9,7 @@
 </head>
 <body id="BSI">
     <div class="container-fluid">
-        <h2 class="titulo-grade">Bacharelado em Sistema de Informação</h2>
+        <h2 class="titulo-grade text-center mt-3">Bacharelado em Sistema de Informação</h2>
         
         <div class="container mt-4">
             <div class="progress-container">
@@ -24,6 +24,7 @@
         </div>
 
         <div class="grade-scroll">
+            
             <div class="semestre-coluna">
                 <div class="semestre-titulo">1º Semestre</div>
                 <div class="materias-wrapper">
@@ -91,7 +92,7 @@
                 <div class="materias-wrapper">
                     <div class="materia-card" id="IA" requisito="LP2 MD2">Inteligência Artificial</div>
                     <div class="materia-card" id="PDM" requisito="PDS">Programação para Dispositivos Móveis</div>
-                    <div class="materia-card" id="ES" requisito="PSD" desbloqueia="QS IHM">Engenharia de Software</div>
+                    <div class="materia-card" id="ES" requisito="PDS" desbloqueia="QS IHM">Engenharia de Software</div>
                     <div class="materia-card" id="SD" requisito="PAR" desbloqueia="DDI">Sistemas Distribuídos</div>
                     <div class="materia-card" id="SF" requisito="BD1 RC" desbloqueia="GG">Segurança da Informação</div>
                     <div class="materia-card" id="GP" requisito="ADM PDS" desbloqueia="SAD GG">Gestão de Projetos</div>
@@ -125,90 +126,27 @@
         </div>
     </div>
 
+    <div class="modal fade" id="materiaModal" tabindex="-1" aria-labelledby="modalTitulo" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-white border-secondary">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title" id="modalTitulo">Nome da Matéria</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-grid gap-2 mb-4">
+                        <button id="btnAcaoConcluir" class="btn btn-success">Marcar como Concluída</button>
+                    </div>
+                    
+                    <h6 class="border-bottom border-secondary pb-2 mb-3">Repositório de Materiais</h6>
+                    <div id="listaRepositorio" class="list-group list-group-flush">
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="requisito.js"></script>
-
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-        // Configurações do seu Firebase (conforme imagem e1302b)
-        const firebaseConfig = {
-            apiKey: "AIzaSyDHn3Dl-WbBR-JJ2f_uaxosGcWZvDFVKEc",
-            authDomain: "grade-curricular-bsi.firebaseapp.com",
-            projectId: "grade-curricular-bsi",
-            storageBucket: "grade-curricular-bsi.appspot.com",
-            messagingSenderId: "951972844111",
-            appId: "1:951972844111:web:53820e6a8770857100465c"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-
-        const matriculaAtiva = localStorage.getItem('matricula_logada');
-        const materiasCards = document.querySelectorAll('.materia-card');
-        let dadosDoAluno = {}; 
-
-        if (!matriculaAtiva) {
-            window.location.href = "index.html";
-        }
-
-        async function carregarDados() {
-            const docRef = doc(db, "alunos", matriculaAtiva);
-            const docSnap = await getDoc(docRef);
-            if (docSnap.exists()) {
-                dadosDoAluno = docSnap.data();
-            }
-            renderizarGrade();
-        }
-
-        async function salvarDados() {
-            const docRef = doc(db, "alunos", matriculaAtiva);
-            await setDoc(docRef, dadosDoAluno);
-        }
-
-        function renderizarGrade() {
-            let concluidasCount = 0;
-            const totalMaterias = materiasCards.length;
-
-            materiasCards.forEach(card => {
-                const id = card.id;
-                if (!id) return; 
-
-                const info = dadosDoAluno[id] || { concluida: false };
-
-                if (info.concluida) {
-                    card.classList.add('materia-concluida');
-                    concluidasCount++;
-                } else {
-                    card.classList.remove('materia-concluida');
-                }
-            });
-
-            const porc = totalMaterias > 0 ? Math.round((concluidasCount / totalMaterias) * 100) : 0;
-            document.getElementById('progresso-fill').style.width = porc + '%';
-            document.getElementById('porcentagem').innerText = porc + '%';
-            document.getElementById('concluidas').innerText = concluidasCount;
-            document.getElementById('total').innerText = totalMaterias;
-        }
-
-        materiasCards.forEach(card => {
-            card.addEventListener('click', async () => {
-                const id = card.id;
-                if (!id) return;
-                
-                if (!dadosDoAluno[id]) {
-                    dadosDoAluno[id] = { concluida: true };
-                } else {
-                    dadosDoAluno[id].concluida = !dadosDoAluno[id].concluida;
-                }
-                
-                renderizarGrade();
-                await salvarDados();
-            });
-        });
-
-        carregarDados();
-    </script>
 </body>
 </html>

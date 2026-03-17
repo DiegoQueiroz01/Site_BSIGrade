@@ -1,9 +1,6 @@
-// 1. CONFIGURAÇÃO DE USUÁRIO E PERSISTÊNCIA
+// 1. CONFIGURAÇÃO E PERSISTÊNCIA
 const matriculaAtiva = localStorage.getItem('matricula_logada');
-const cursoAtivo = localStorage.getItem('curso_selecionado');
-
-// Redireciona se não houver login
-if (!matriculaAtiva && !cursoAtivo) {
+if (!matriculaAtiva) {
     window.location.href = 'index.html'; 
 }
 
@@ -13,17 +10,13 @@ let concluidasSalvas = JSON.parse(localStorage.getItem(CHAVE_STORAGE)) || [];
 // 2. SELEÇÃO DE ELEMENTOS
 const materias = document.querySelectorAll('.materia-card');
 const totalMaterias = materias.length;
-const elPorcentagem = document.getElementById('porcentagem');
-const elBarraFill = document.getElementById('progresso-fill');
-const elConcluidas = document.getElementById('concluidas');
-const elTotal = document.getElementById('total');
+const modalBS = new bootstrap.Modal(document.getElementById('materiaModal'));
+let idMateriaFoco = null; // Para saber qual matéria o modal está editando
 
-// 3. FUNÇÃO PRINCIPAL DE ATUALIZAÇÃO
+// 3. FUNÇÃO DE ATUALIZAÇÃO DA GRADE
 function atualizarInterface() {
     let contagem = 0;
-
     materias.forEach(materia => {
-        // Garantimos que estamos comparando o ID corretamente
         if (concluidasSalvas.includes(materia.id)) {
             materia.classList.add('materia-concluida');
             contagem++;
@@ -33,90 +26,77 @@ function atualizarInterface() {
     });
 
     const porcentagem = totalMaterias > 0 ? Math.round((contagem / totalMaterias) * 100) : 0;
-
-    if (elPorcentagem) elPorcentagem.innerText = porcentagem + '%';
-    if (elBarraFill) elBarraFill.style.width = porcentagem + '%';
-    if (elConcluidas) elConcluidas.innerText = contagem;
-    if (elTotal) elTotal.innerText = totalMaterias;
+    
+    document.getElementById('porcentagem').innerText = porcentagem + '%';
+    document.getElementById('progresso-fill').style.width = porcentagem + '%';
+    document.getElementById('concluidas').innerText = contagem;
+    document.getElementById('total').innerText = totalMaterias;
 
     localStorage.setItem(CHAVE_STORAGE, JSON.stringify(concluidasSalvas));
 }
 
-// 4. EVENTOS
+// 4. LÓGICA DO MODAL E CLIQUE
 materias.forEach(materia => {
-    
-    // EVENTO DE CLIQUE (CORRIGIDO)
-    materia.addEventListener('click', function(e) {
-        // Evita comportamentos estranhos de propagação
-        e.preventDefault();
-        
-        const idMateria = this.id;
+    materia.addEventListener('click', function() {
+        idMateriaFoco = this.id;
+        if (!idMateriaFoco) return;
 
-        // SE A MATÉRIA NÃO TIVER ID NO HTML, O CLIQUE VAI FALHAR
-        if (!idMateria) {
-            console.error("Erro: Esta matéria não possui um ID no HTML!", this);
-            return;
-        }
+        // Atualiza os textos do Modal
+        document.getElementById('modalTitulo').innerText = this.innerText;
+        const btn = document.getElementById('btnAcaoConcluir');
+        
+        const jaConcluida = concluidasSalvas.includes(idMateriaFoco);
+        btn.innerText = jaConcluida ? "Desmarcar Matéria" : "Marcar como Concluída";
+        btn.className = jaConcluida ? "btn btn-danger" : "btn btn-success";
 
-        const index = concluidasSalvas.indexOf(idMateria);
-        
-        if (index === -1) {
-            // Se não está na lista, adiciona
-            concluidasSalvas.push(idMateria);
-        } else {
-            // Se já está na lista, remove
-            concluidasSalvas.splice(index, 1);
-        }
-        
-        atualizarInterface();
+        // Simulação de Repositório (Protótipo)
+        document.getElementById('listaRepositorio').innerHTML = `
+            <a href="#" class="list-group-item list-group-item-action bg-dark text-info border-secondary small">📄 Prova Antiga (Drive)</a>
+            <a href="#" class="list-group-item list-group-item-action bg-dark text-info border-secondary small">🔗 Resumos da Turma</a>
+        `;
+
+        modalBS.show();
     });
 
-    // REQUISITOS (HOVER)
+    // --- LÓGICA DE HOVER (Seus requisitos originais) ---
     materia.addEventListener('mouseenter', () => {
-        const idRequisito = materia.getAttribute('requisito');
-        const idDesbloqueia = materia.getAttribute('desbloqueia');
-        const idPos = materia.getAttribute('pos');
+        const ids = {
+            'requisito': materia.getAttribute('requisito'),
+            'desbloqueia': materia.getAttribute('desbloqueia'),
+            'pos': materia.getAttribute('pos')
+        };
 
-        if (idRequisito) {
-            idRequisito.split(' ').forEach(reqID => {
-                const elReq = document.getElementById(reqID.trim());
-                if (elReq) elReq.classList.add('requisito');
-            });
-        }
-        if (idDesbloqueia) {
-            idDesbloqueia.split(' ').forEach(posReqID => {
-                const elDesbloqueia = document.getElementById(posReqID.trim());
-                if (elDesbloqueia) elDesbloqueia.classList.add('desbloqueia');
-            });
-        }
-        if (idPos) {
-            idPos.split(' ').forEach(posID => {
-                const elPos = document.getElementById(posID.trim());
-                if (elPos) elPos.classList.add('pos');
-            });
+        for (const [classe, attr] of Object.entries(ids)) {
+            if (attr) {
+                attr.split(' ').forEach(id => {
+                    const el = document.getElementById(id.trim());
+                    if (el) el.classList.add(classe);
+                });
+            }
         }
         materia.classList.add('materia-focada');
     });
 
     materia.addEventListener('mouseleave', () => {
-        document.querySelectorAll('.requisito').forEach(el => {
-            el.classList.remove('requisito');
+        ['requisito', 'desbloqueia', 'pos', 'materia-focada'].forEach(cl => {
+            document.querySelectorAll('.' + cl).forEach(el => el.classList.remove(cl));
         });
-        document.querySelectorAll('.desbloqueia').forEach(el => {
-            el.classList.remove('desbloqueia');
-        });
-        document.querySelectorAll('.pos').forEach(el => {
-            el.classList.remove('pos');
-        });
-        materia.classList.remove('materia-focada');
     });
+});
+
+// Ação do Botão dentro do Modal
+document.getElementById('btnAcaoConcluir').addEventListener('click', () => {
+    const index = concluidasSalvas.indexOf(idMateriaFoco);
+    
+    if (index === -1) {
+        concluidasSalvas.push(idMateriaFoco);
+    } else {
+        concluidasSalvas.splice(index, 1);
+    }
+    
+    atualizarInterface();
+    modalBS.hide();
 });
 
 // Inicialização
 atualizarInterface();
-
-// Função de Logout
-function logout() {
-    localStorage.removeItem('matricula_logada');
-    window.location.href = 'index.html';
-}
