@@ -14,76 +14,161 @@ const REPOSITORIO_DATA = {
     "CALC1": [
         { nome: "Tabela de Derivadas e Integrais", url: "https://link-do-drive.com/calculo" }
     ]
-    // Adicione os IDs das outras matérias aqui conforme conseguir os materiais
 };
 
-// 1. CONFIGURAÇÃO E PERSISTÊNCIA
+const CATEGORIAS = {
+    "AP": { tipo: "CCO", cor: "cco" },
+    "LPGA": { tipo: "HUM", cor: "hum" },
+    "FSI": { tipo: "CCO", cor: "cco" },
+    "MD1": { tipo: "MAT", cor: "mat" },
+    "ICC": { tipo: "CCO", cor: "cco" },
+    "IAC": { tipo: "HUM", cor: "hum" },
+    "LP1": { tipo: "TEC", cor: "tec" },
+    "OAC": { tipo: "CCO", cor: "cco" },
+    "CES": { tipo: "HUM", cor: "hum" },
+    "MD2": { tipo: "MAT", cor: "mat" },
+    "CALC1": { tipo: "MAT", cor: "mat" },
+    "ADM": { tipo: "FCO", cor: "fco" },
+    "LP2": { tipo: "TEC", cor: "tec" },
+    "ED": { tipo: "CCO", cor: "cco" },
+    "SO": { tipo: "CCO", cor: "cco" },
+    "PE": { tipo: "MAT", cor: "mat" },
+    "DC": { tipo: "HUM", cor: "hum" },
+    "OSM": { tipo: "FCO", cor: "fco" },
+    "MPC": { tipo: "FCO", cor: "fco" },
+    "AMS": { tipo: "CCO", cor: "cco" },
+    "BD1": { tipo: "CCO", cor: "cco" },
+    "RC": { tipo: "CCO", cor: "cco" },
+    "WEB1": { tipo: "TEC", cor: "tec" },
+    "EMP": { tipo: "FCO", cor: "fco" },
+    "ACEXI": { tipo: "ACEX", cor: "acex" },
+    "ECON": { tipo: "FCO", cor: "fco" },
+    "PDS": { tipo: "CCO", cor: "cco" },
+    "CA": { tipo: "CCO", cor: "cco" },
+    "BD2": { tipo: "CCO", cor: "cco" },
+    "PAR": { tipo: "CCO", cor: "cco" },
+    "WEB2": { tipo: "TEC", cor: "tec" },
+    "ACEXII": { tipo: "ACEX", cor: "acex" },
+    "IA": { tipo: "CCO", cor: "cco" },
+    "PDM": { tipo: "TEC", cor: "tec" },
+    "ES": { tipo: "CCO", cor: "cco" },
+    "SD": { tipo: "CCO", cor: "cco" },
+    "SF": { tipo: "CCO", cor: "cco" },
+    "GP": { tipo: "FCO", cor: "fco" },
+    "ACEXIII": { tipo: "ACEX", cor: "acex" },
+    "DDI": { tipo: "CCO", cor: "cco" },
+    "QS": { tipo: "CCO", cor: "cco" },
+    "TCC1": { tipo: "TCC", cor: "tcc" },
+    "IHM": { tipo: "CCO", cor: "cco" },
+    "SAD": { tipo: "CCO", cor: "cco" },
+    "OP1": { tipo: "OPT", cor: "opt" },
+    "ACEXIV": { tipo: "ACEX", cor: "acex" },
+    "MA": { tipo: "FCO", cor: "fco" },
+    "GG": { tipo: "CCO", cor: "cco" },
+    "TCC2": { tipo: "TCC", cor: "tcc" },
+    "OP2": { tipo: "OPT", cor: "opt" },
+    "OP3": { tipo: "OPT", cor: "opt" }
+};
+
 const matriculaAtiva = localStorage.getItem('matricula_logada');
 if (!matriculaAtiva) {
-    window.location.href = 'index.html'; 
+    window.location.href = 'index.html';
 }
 
 const CHAVE_STORAGE = `progresso_${matriculaAtiva}`;
 let concluidasSalvas = JSON.parse(localStorage.getItem(CHAVE_STORAGE)) || [];
 
-// 2. SELEÇÃO DE ELEMENTOS
 const materias = document.querySelectorAll('.materia-card');
 const totalMaterias = materias.length;
-const modalBS = new bootstrap.Modal(document.getElementById('materiaModal'));
-let idMateriaFoco = null; 
+const modalElement = document.getElementById('materiaModal');
+const modalBS = modalElement ? new bootstrap.Modal(modalElement) : null;
+let idMateriaFoco = null;
 
-// 3. FUNÇÃO DE ATUALIZAÇÃO DA GRADE (Progresso e Cores)
+function atualizarEstadoMateria(materia) {
+    const id = materia.id;
+    const jaConcluida = concluidasSalvas.includes(id);
+    const requisito = materia.getAttribute('requisito');
+    const desbloqueia = materia.getAttribute('desbloqueia');
+    const estaBloqueada = Boolean(requisito && !concluidasSalvas.includes(requisito));
+
+    materia.classList.toggle('materia-concluida', jaConcluida);
+    materia.classList.toggle('materia-bloqueada', estaBloqueada && !jaConcluida);
+
+    const lockIcon = materia.querySelector('.materia-lock');
+    if (lockIcon) {
+        lockIcon.innerHTML = jaConcluida ? '<i class="bi bi-unlock-fill" style="color:#16a34a"></i>' : estaBloqueada ? '<i class="bi bi-lock-fill" style="color:#dc2626"></i>' : '<i class="bi bi-unlock-fill" style="color:#0f766e"></i>';
+    }
+
+    const prereqIcon = materia.querySelector('.materia-prereq');
+    if (prereqIcon) {
+        prereqIcon.innerHTML = requisito ? '<i class="bi bi-star-fill"></i>' : '';
+    }
+
+    const tag = materia.querySelector('.materia-tag');
+    if (tag) {
+        const categoria = CATEGORIAS[id];
+        if (categoria) {
+            tag.textContent = categoria.tipo;
+            tag.className = `materia-tag ${categoria.cor}`;
+            tag.style.display = 'inline-flex';
+        } else {
+            tag.style.display = 'none';
+        }
+    }
+}
+
 function atualizarInterface() {
     let contagem = 0;
     materias.forEach(materia => {
+        atualizarEstadoMateria(materia);
         if (concluidasSalvas.includes(materia.id)) {
-            materia.classList.add('materia-concluida');
             contagem++;
-        } else {
-            materia.classList.remove('materia-concluida');
         }
     });
 
     const porcentagem = totalMaterias > 0 ? Math.round((contagem / totalMaterias) * 100) : 0;
-    
-    // Atualiza elementos da UI
+
     const elPorc = document.getElementById('porcentagem');
     const elBarra = document.getElementById('progresso-fill');
     const elConcluidas = document.getElementById('concluidas');
     const elTotal = document.getElementById('total');
 
-    if(elPorc) elPorc.innerText = porcentagem + '%';
-    if(elBarra) elBarra.style.width = porcentagem + '%';
-    if(elConcluidas) elConcluidas.innerText = contagem;
-    if(elTotal) elTotal.innerText = totalMaterias;
+    if (elPorc) elPorc.innerText = porcentagem + '%';
+    if (elBarra) elBarra.style.width = porcentagem + '%';
+    if (elConcluidas) elConcluidas.innerText = contagem;
+    if (elTotal) elTotal.innerText = totalMaterias;
 
     localStorage.setItem(CHAVE_STORAGE, JSON.stringify(concluidasSalvas));
 }
 
-// 4. LOGICA DOS EVENTOS
 materias.forEach(materia => {
-    
-    // --- EVENTO DE CLIQUE (Abrir Modal e Carregar Repositório) ---
-    materia.addEventListener('click', function() {
+    const texto = materia.innerText.trim();
+    materia.innerHTML = `
+        <span class="materia-lock"></span>
+        <span class="materia-prereq"></span>
+        <span class="materia-tag"></span>
+        <span class="materia-card-content">
+            <span class="materia-card-text">${texto}</span>
+        </span>
+    `;
+
+    materia.addEventListener('click', function () {
         idMateriaFoco = this.id;
         if (!idMateriaFoco) return;
 
-        // Atualiza o Título do Modal
-        document.getElementById('modalTitulo').innerText = this.innerText;
-        
-        // Ajusta o Botão de Conclusão (Cor e Texto)
+        document.getElementById('modalTitulo').innerText = texto;
+
         const btn = document.getElementById('btnAcaoConcluir');
         const jaConcluida = concluidasSalvas.includes(idMateriaFoco);
-        
+
         if (jaConcluida) {
             btn.innerHTML = '<i class="bi bi-x-circle me-2"></i>Desmarcar Matéria';
-            btn.className = "btn btn-danger fw-bold";
+            btn.className = 'btn btn-danger fw-bold';
         } else {
             btn.innerHTML = '<i class="bi bi-check-circle me-2"></i>Marcar como Concluída';
-            btn.className = "btn btn-success fw-bold";
+            btn.className = 'btn btn-success fw-bold';
         }
 
-        // --- BUSCA DINÂMICA NO REPOSITÓRIO ---
         const listaUI = document.getElementById('listaRepositorio');
         const materiaisData = REPOSITORIO_DATA[idMateriaFoco];
 
@@ -103,25 +188,26 @@ materias.forEach(materia => {
             `;
         }
 
-        modalBS.show();
+        if (modalBS) {
+            modalBS.show();
+        }
     });
 
-    // --- LÓGICA DE HOVER (Destaque de Requisitos) ---
     materia.addEventListener('mouseenter', () => {
         const ids = {
-            'requisito': materia.getAttribute('requisito'),
-            'desbloqueia': materia.getAttribute('desbloqueia'),
-            'pos': materia.getAttribute('pos')
+            requisito: materia.getAttribute('requisito'),
+            desbloqueia: materia.getAttribute('desbloqueia'),
+            pos: materia.getAttribute('pos')
         };
 
-        for (const [classe, attr] of Object.entries(ids)) {
+        Object.entries(ids).forEach(([classe, attr]) => {
             if (attr) {
                 attr.split(' ').forEach(id => {
                     const el = document.getElementById(id.trim());
                     if (el) el.classList.add(classe);
                 });
             }
-        }
+        });
         materia.classList.add('materia-focada');
     });
 
@@ -132,21 +218,20 @@ materias.forEach(materia => {
     });
 });
 
-// --- AÇÃO DO BOTÃO DENTRO DO MODAL (Confirmar Conclusão) ---
 document.getElementById('btnAcaoConcluir').addEventListener('click', () => {
     if (!idMateriaFoco) return;
-    
+
     const index = concluidasSalvas.indexOf(idMateriaFoco);
-    
     if (index === -1) {
         concluidasSalvas.push(idMateriaFoco);
     } else {
         concluidasSalvas.splice(index, 1);
     }
-    
+
     atualizarInterface();
-    modalBS.hide();
+    if (modalBS) {
+        modalBS.hide();
+    }
 });
 
-// Inicialização da interface ao carregar a página
 atualizarInterface();

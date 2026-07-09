@@ -1,170 +1,223 @@
-#BSI{
-    background: linear-gradient(15deg, rgb(0, 0, 0) 45%, rgb(255, 250, 230) 115%) no-repeat fixed; /*Define a cor de fundo da página de login e cria um degradê entre as cores.*/
+body#BSI,
+body#EAMB {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #071a2e 0%, #123d66 45%, #2b7fff 100%);
+    color: #f8fafc;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-#EAMB{
-        background: linear-gradient(15deg, rgb(32, 122, 5) 45%, rgb(255, 250, 230) 115%) no-repeat fixed; /*Define a cor de fundo da página de login e cria um degradê entre as cores.*/
+
+body#EAMB {
+    background: linear-gradient(135deg, #0f3d2e 0%, #2e7d32 45%, #66bb6a 100%);
 }
-/* Título da Página */
+
 .titulo-grade {
     color: white;
     text-align: center;
-    margin: 30px 0;
-    font-weight: 600;
-    letter-spacing: 2px;
+    margin: 30px 0 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
-/* --- CONTAINER GERAL (O TRILHO HORIZONTAL) --- */
 .grade-scroll {
-    display: flex;           /* Coloca os semestres um ao lado do outro */
-    overflow-x: auto;        /* Permite rolar para o lado se não couber na tela */
-    gap: 20px;               /* Espaço entre as colunas dos semestres */
-    padding: 20px;
-    padding-bottom: 40px;    /* Espaço extra para a barra de rolagem não colar */
-    
-    /* Estilização da barra de rolagem (Scrollbar) para ficar bonita */
+    display: flex;
+    overflow-x: auto;
+    gap: 18px;
+    padding: 10px 20px 36px;
     scrollbar-width: thin;
-    scrollbar-color: #007bff #222;
+    scrollbar-color: #60a5fa #0f172a;
 }
 
-/* Customização da barra de rolagem no Chrome/Safari */
 .grade-scroll::-webkit-scrollbar {
     height: 10px;
 }
+
 .grade-scroll::-webkit-scrollbar-track {
-    background: #222;
-    border-radius: 5px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 999px;
 }
+
 .grade-scroll::-webkit-scrollbar-thumb {
-    background-color: #007bff;
-    border-radius: 5px;
+    background: linear-gradient(90deg, #60a5fa, #34d399);
+    border-radius: 999px;
 }
 
-/* --- A COLUNA DO SEMESTRE --- */
 .semestre-coluna {
-    min-width: 260px;        /* Largura fixa: garante que a coluna não fique espremida */
-    max-width: 260px;
-    background-color: rgba(255, 255, 255, 0.05); /* Fundo vidro translúcido */
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    min-width: 270px;
+    max-width: 270px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
     display: flex;
-    flex-direction: column;  /* Garante que título fique em cima e matérias embaixo */
-    overflow: hidden;        /* Arredonda os cantos internos */
+    flex-direction: column;
+    overflow: hidden;
+    backdrop-filter: blur(12px);
 }
 
-/* Cabeçalho da Coluna (Ex: "1º Semestre") */
 .semestre-titulo {
-    background: #2e0261;
+    background: linear-gradient(90deg, #0f172a, #1d4ed8);
     color: white;
-    padding: 15px;
+    padding: 14px 12px;
     text-align: center;
-    font-weight: bold;
-    font-size: 1.1rem;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    font-weight: 700;
+    font-size: 1.02rem;
 }
 
 .materias-wrapper {
-    padding: 15px;
+    padding: 12px;
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Espaço entre as matérias verticalmente */
+    gap: 10px;
 }
 
-/* --- O CARD DA MATÉRIA (O BLOCO) --- */
 .materia-card {
-    background-color: white;
-    color: #333;
-    padding: 15px;
-    border-radius: 6px;
+    position: relative;
+    background: #ffffff;
+    color: #0f172a;
+    padding: 12px 12px 12px 14px;
+    border-radius: 12px;
     font-size: 0.9rem;
-    font-weight: 500;
-    border-left: 4px solid #ddd; /* Detalhe visual na esquerda */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    transition: all 0.2s ease;
+    font-weight: 600;
+    border-left: 4px solid #cbd5e1;
+    box-shadow: 0 10px 18px rgba(15, 23, 42, 0.12);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     cursor: pointer;
-    cursor: pointer; /* Indica que o elemento é clicável */
-    user-select: none; /* Evita que o texto fique azul/selecionado ao clicar várias vezes */
+    user-select: none;
+    min-height: 58px;
+    display: flex;
+    align-items: center;
 }
 
-/* Efeito ao passar o mouse na matéria */
 .materia-card:hover {
-    transform: scale(1.03);       /* Aumenta levemente */
-    border-left-color: #007bff;   /* A borda lateral fica azul */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.16);
 }
-/* Classe que será adicionada via JavaScript */
+
+.materia-card-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+}
+
+.materia-card-text {
+    line-height: 1.3;
+    flex: 1;
+}
+
+.materia-indicator {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+}
+
+.materia-lock {
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    font-size: 0.9rem;
+}
+
+.materia-prereq {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    color: #fbbf24;
+    font-size: 0.9rem;
+}
+
+.materia-tag {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    padding: 2px 6px;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: white;
+}
+
+.materia-tag.cco { background: #2563eb; }
+.materia-tag.fco { background: #0f766e; }
+.materia-tag.mat { background: #7c3aed; }
+.materia-tag.tec { background: #ea580c; }
+.materia-tag.hum { background: #be185d; }
+.materia-tag.acex { background: #a16207; }
+.materia-tag.tcc { background: #dc2626; }
+.materia-tag.opt { background: #059669; }
+
 .requisito {
-    background-color: #fff8b6 !important; /* Fundo amarelo claro */
-    border-left-color: #5e5506 !important; /* Borda Laranja */
-    transform: scale(1.05); /* Aumenta um pouquinho */
-    box-shadow: 0 0 15px rgb(255, 239, 97); /* Brilho externo */
-    font-weight: bold;
-    color: #383414;
+    background-color: #fff7d6 !important;
+    border-left-color: #f59e0b !important;
+    box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.15), 0 12px 24px rgba(15, 23, 42, 0.16);
 }
+
 .desbloqueia {
-    background-color: #7bebff !important; /* Fundo azul claro */
-    border-left-color: #17a2b8 !important; /* Borda Azul */
-    transform: scale(1.05); /* Aumenta um pouquinho */
-    box-shadow: 0 0 15px rgb(182, 245, 255); /* Brilho externo */
-    font-weight: bold;
-    color: #0c5460;
+    background-color: #e0f2fe !important;
+    border-left-color: #0284c7 !important;
 }
+
 .pos {
-    background-color: #ffcba0 !important; /* Fundo laranja claro */
-    border-left-color: #ff8b07 !important; /* Borda laranja */
-    transform: scale(1.05); /* Aumenta um pouquinho */
-    box-shadow: 0 0 15px rgb(255, 178, 90); /* Brilho externo */
-    font-weight: bold;
-    color: #856404; 
+    background-color: #fef3c7 !important;
+    border-left-color: #d97706 !important;
 }
 
-/* Opcional: Estilo para a matéria que você está com o mouse em cima */
 .materia-focada {
-    border-left-color: #0d6efd !important; /* Azul forte */
-}
-/* Classe para matéria concluída */
-.materia-concluida {
-    background-color: #00ff3c !important; /* Verde claro */
-    border-left-color: #28a745 !important; /* Borda verde forte */
-    color: #155724 !important;            /* Texto verde escuro */
-    text-decoration: line-through;       /* Riscado (opcional) */
-    opacity: 0.8;                        /* Fica levemente mais clara */
+    border-left-color: #2563eb !important;
 }
 
-/* Adicionando um ícone de "check" via CSS (opcional) */
-.materia-concluida::after {
-    content: " ✓";
-    font-weight: bold;
-    float: right;
+.materia-concluida {
+    background-color: #dcfce7 !important;
+    border-left-color: #16a34a !important;
+    color: #166534 !important;
+    text-decoration: line-through;
+    opacity: 0.92;
 }
+
+.materia-bloqueada {
+    background-color: #fef2f2 !important;
+    border-left-color: #dc2626 !important;
+    color: #991b1b !important;
+    opacity: 0.95;
+}
+
 .progress-container {
-    background: rgba(255, 254, 254, 0.1);
-    padding: 20px;
-    border-radius: 15px;
-    margin-bottom: 30px;
+    background: rgba(255, 255, 255, 0.14);
+    padding: 16px 20px;
+    border-radius: 16px;
+    margin-bottom: 20px;
     text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
 }
 
 .progress-text {
     color: white;
-    font-weight: bold;
+    font-weight: 700;
     display: block;
     margin-bottom: 10px;
 }
 
 .progress-bar-bg {
-    background-color: #333;
-    border-radius: 20px;
-    height: 15px;
+    background-color: rgba(15,23,42,0.35);
+    border-radius: 999px;
+    height: 12px;
     width: 100%;
     overflow: hidden;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
 }
 
 .progress-bar-fill {
-    background: linear-gradient(90deg, #28a745, #85ff9e);
+    background: linear-gradient(90deg, #22c55e, #86efac);
     height: 100%;
-    width: 0%; /* Começa em 0 */
-    transition: width 0.5s ease-in-out; /* Animação suave ao encher */
-    box-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
+    width: 0%;
+    transition: width 0.4s ease-in-out;
+    box-shadow: 0 0 12px rgba(34, 197, 94, 0.35);
 }

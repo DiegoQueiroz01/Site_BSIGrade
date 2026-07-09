@@ -8,51 +8,40 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body id="login">
-    <main>
-        <div class="container text-center">
-            <div class="row">
-                <div class="col">
-                    <div class="logo-IFBA">
-                        <img src="Imagens/IFBA.png" alt="Logo IFBA">
-                    </div>
-                </div>
+    <main class="login-shell">
+        <section class="login-card">
+            <div class="logo-IFBA">
+                <img src="Imagens/IFBA.png" alt="Logo IFBA">
             </div>
-            
-            <div class="row">
-                <div class="col">
-                    <div class="text-login">
-                        <p>INSTITUTO FEDERAL DE EDUCAÇÃO, CIÊNCIA E TECNOLOGIA DA BAHIA</p>
-                        <p>CAMPUS VITÓRIA DA CONQUISTA</p>
-                    </div>
-                </div>
+
+            <div class="text-login">
+                <p>INSTITUTO FEDERAL DE EDUCAÇÃO, CIÊNCIA E TECNOLOGIA DA BAHIA</p>
+                <p>CAMPUS VITÓRIA DA CONQUISTA</p>
             </div>
-        </div>
 
-        <!-- Seletor de curso -->
-        <select class="form-select" aria-label="Default select example">
-            <option selected>Selecione seu curso</option>
-            <option value="1">Bacharelado em Sistemas de Informação</option>
-            <option value="2">Bacharelado em Engenharia Ambiental</option>
-        </select>
+            <div class="login-panel">
+                <label for="curso" class="form-label text-white">Selecione seu curso</label>
+                <select id="curso" class="form-select" aria-label="Curso">
+                    <option selected>Selecione seu curso</option>
+                    <option value="1">Bacharelado em Sistemas de Informação</option>
+                    <option value="2">Bacharelado em Engenharia Ambiental</option>
+                </select>
 
-        <!-- Formulário de Login -->
-        <div class="forms container" style="max-width: 400px;">
-            <div class="mb-3">
                 <label for="examploNumerodeMatricula" class="form-label text-white">Informe seu número de matrícula</label>
                 <input type="text" class="form-control" id="examploNumerodeMatricula" placeholder="Digite aqui sua matrícula">
+
+                <div class="button-enter text-center">
+                    <button type="button" onclick="validarELogar()" class="btn btn-primary w-100">Entrar</button>
+                </div>
             </div>
-            <div class="button-enter text-center">
-                <button type="button" onclick="validarELogar()" class="btn btn-primary w-100">Entrar</button>
-            </div>
-        </div>
+        </section>
     </main>
 
     <script>
         function validarELogar() {
-            // Pega o valor do input pelo ID
             const inputMatricula = document.getElementById('examploNumerodeMatricula').value.trim();
-            // Validação simples: Verifica se o campo não está vazio
-            const inputCurso = document.querySelector('.form-select').value;
+            const inputCurso = document.getElementById('curso').value;
+
             if (inputCurso === "Selecione seu curso") {
                 alert("Por favor, selecione seu curso!");
                 return;
@@ -63,10 +52,8 @@
                 return;
             }
 
-            // 1. Salva a matrícula no LocalStorage para a página da grade usar
             localStorage.setItem('matricula_logada', inputMatricula);
 
-            // 2. Redireciona para a página da grade
             if (inputCurso === "1") {
                 window.location.href = 'BSI.html';
             } else if (inputCurso === "2") {
@@ -74,7 +61,6 @@
             }
         }
 
-        // Bônus: Permitir apertar "Enter" no teclado para logar
         document.getElementById('examploNumerodeMatricula').addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
                 validarELogar();

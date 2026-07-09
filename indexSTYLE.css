@@ -1,73 +1,84 @@
-#login{
-    background: linear-gradient(15deg, rgb(18, 114, 15) 10%, rgb(255, 250, 230) 115%) no-repeat fixed; /*Define a cor de fundo da página de login e cria um degradê entre as cores.*/
+body#login {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #071a2e 0%, #123d66 45%, #2b7fff 100%);
+    color: #f8fbff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.text-login{
-    margin-top: 0%; /*Distância da margem superior do texto.*/
-    color: white; /*cor do texto.*/
-    text-align: center; /*centralização do texto.*/
-    font-size: 2rem; /*Tamanho do texto.*/
-    font-weight: 600; /*Intensidade do negrito.*/
-}
-.logo-IFBA {
-    margin-top: 6%;
-    width: 100%; /* Garante que o container da logo ocupe a largura toda */
+
+.login-shell {
+    min-height: 100vh;
     display: flex;
-    justify-content: center; /* Centraliza a imagem horizontalmente */
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.login-card {
+    width: min(100%, 520px);
+    padding: 32px 28px;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 20px 45px rgba(2, 8, 23, 0.25);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.logo-IFBA {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 18px;
 }
 
 .logo-IFBA img {
+    width: 230px;
+    max-width: 100%;
     height: auto;
-    width: 300px;
-    display: block; /* Remove espaços indesejados abaixo da imagem */
 }
 
 .text-login {
-    margin-top: 20px;
-    font-weight: bold; /* Opcional: deixa o texto mais visível como na logo */
+    text-align: center;
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 24px;
+    color: #f8fbff;
 }
 
 .text-login p {
-    margin-bottom: 5px; /* Diminui o espaço entre as duas linhas de texto */
+    margin-bottom: 4px;
 }
-.forms {
+
+.login-panel {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Isso centraliza tudo horizontalmente */
-    width: 100%;
+    gap: 8px;
 }
-.form-select{
-    margin-top: 20px; /* Espaço acima do seletor */
-    margin-bottom: 20px; /* Espaço abaixo do seletor */
-    width: 90%; /* Usa porcentagem para não quebrar em telas de celular*/
-    max-width: 400px; /* Limita o tamanho máximo para telas grandes*/
-    margin-left: auto;
-    margin-right: auto;
+
+.form-select,
+.form-control {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 12px 14px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #0f172a;
 }
-.forms .mb-3 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+
+.form-select:focus,
+.form-control:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 0.2rem rgba(96, 165, 250, 0.25);
 }
-.form-NMatricula {
-    text-align: center; /* Garante que o texto do label fique centralizado */
-    color: white;
-    font-weight: 500;
-    margin-bottom: 10px; /* Um pequeno espaço entre o label e o input */
-    display: block; /* Garante que o label ocupe a linha para aceitar alinhamento */
+
+.button-enter {
+    margin-top: 8px;
 }
-.matricula {
-    border-radius: 8px;
-    height: 40px;
-    width: 90%; /* Usa porcentagem para não quebrar em telas de celular*/
-    max-width: 500px; /* Limita o tamanho máximo para telas grandes*/
-    text-align: center; /* Opcional: centraliza o texto digitado dentro do input */
-}
-.button-enter{
-    margin-top: 10px; /*Define a distância da margem superior do botão.*/
-    margin-bottom: 10px; /*Define a distância da margem inferior do botão.*/
-    display: flex; /*Define o tipo de exibição do botão.*/
-    justify-content: center; /*Centraliza o conteúdo do botão.*/
-    margin-left: auto;
-    margin-right: auto;
+
+.button-enter .btn {
+    border-radius: 999px;
+    padding: 12px 16px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #2563eb, #38bdf8);
+    border: none;
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
 }
