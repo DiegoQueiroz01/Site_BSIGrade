@@ -11,6 +11,101 @@ body#EAMB {
     background: linear-gradient(135deg, #0f3d2e 0%, #2e7d32 45%, #66bb6a 100%);
 }
 
+body#EAMB .semestre-titulo {
+    background: linear-gradient(90deg, #1f7a2f, #3fa46a);
+}
+
+body#EAMB .semestre-coluna {
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+body#EAMB .progress-container {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.22);
+}
+
+body#EAMB .progress-bar-bg {
+    background: rgba(255, 255, 255, 0.22);
+}
+
+body#EAMB .progress-bar-fill {
+    background: linear-gradient(90deg, #86efac, #22c55e);
+}
+
+body#EAMB .materia-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-left-color: #6ee7b7;
+}
+
+body#EAMB .materia-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 30px rgba(34, 197, 94, 0.16);
+}
+
+body#EAMB .materia-prereq {
+    color: #047857;
+}
+
+body#EAMB .materia-lock {
+    color: #14532d;
+}
+
+body#EAMB .requisito {
+    background-color: #ecfccb !important;
+    border-left-color: #65a30d !important;
+}
+
+body#EAMB .desbloqueia {
+    background-color: #bbf7d0 !important;
+    border-left-color: #16a34a !important;
+}
+
+body#EAMB .pos {
+    background-color: #bfdbfe !important;
+    border-left-color: #2563eb !important;
+}
+
+body#EAMB .materia-concluida {
+    background-color: #dcfce7 !important;
+    border-left-color: #16a34a !important;
+    color: #14532d !important;
+}
+
+body#EAMB .materia-bloqueada {
+    background-color: #f0fdf4 !important;
+    border-left-color: #15803d !important;
+    color: #14532d !important;
+    opacity: 0.98;
+}
+
+body#EAMB .materia-card.requisito.materia-bloqueada {
+    background-color: #fefce8 !important;
+}
+
+body#EAMB .materia-card.desbloqueia.materia-bloqueada {
+    background-color: #bbf7d0 !important;
+}
+
+body#EAMB .materia-card.pos.materia-bloqueada {
+    background-color: #bfdbfe !important;
+}
+
+body#EAMB .modal-content {
+    background: rgba(6, 95, 70, 0.95);
+    border: 1px solid rgba(167, 243, 208, 0.35);
+}
+
+body#EAMB .btn-success {
+    background-color: #16a34a;
+    border-color: #15803d;
+}
+
+body#EAMB .btn-danger {
+    background-color: #15803d;
+    border-color: #14532d;
+}
+
 .titulo-grade {
     color: white;
     text-align: center;
@@ -19,8 +114,66 @@ body#EAMB {
     letter-spacing: 1px;
 }
 
+@media (max-width: 1200px) {
+    .grade-scroll {
+        gap: 14px;
+    }
+    .semestre-coluna {
+        min-width: 230px;
+        max-width: 230px;
+    }
+}
+
+@media (max-width: 992px) {
+    .grade-scroll {
+        justify-content: center;
+        padding: 10px 14px 30px;
+    }
+    .semestre-coluna {
+        min-width: 100%;
+        max-width: 100%;
+    }
+    .materia-card {
+        font-size: 0.88rem;
+    }
+    .semestre-titulo {
+        font-size: 0.96rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .grade-scroll {
+        padding: 8px 10px 24px;
+    }
+    .materia-card {
+        padding: 10px 12px;
+    }
+    .progress-container {
+        padding: 14px 16px;
+    }
+}
+
+@media (max-width: 576px) {
+    .titulo-grade {
+        font-size: 1.3rem;
+        margin-top: 22px;
+    }
+    .progress-text {
+        font-size: 0.95rem;
+    }
+    .progress-bar-bg {
+        height: 10px;
+    }
+    .materia-card {
+        min-height: 54px;
+    }
+}
+
 .grade-scroll {
     display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
     overflow-x: auto;
     gap: 18px;
     padding: 10px 20px 36px;
@@ -43,8 +196,9 @@ body#EAMB {
 }
 
 .semestre-coluna {
-    min-width: 270px;
-    max-width: 270px;
+    min-width: 250px;
+    max-width: 280px;
+    width: 100%;
     background: rgba(255, 255, 255, 0.12);
     border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.15);
@@ -52,6 +206,7 @@ body#EAMB {
     flex-direction: column;
     overflow: hidden;
     backdrop-filter: blur(12px);
+    flex: 1 1 280px;
 }
 
 .semestre-titulo {
@@ -186,6 +341,24 @@ body#EAMB {
     border-left-color: #dc2626 !important;
     color: #991b1b !important;
     opacity: 0.95;
+}
+
+.materia-card.requisito.materia-bloqueada {
+    background-color: #fff7d6 !important;
+    border-left-color: #f59e0b !important;
+    color: #0f172a !important;
+}
+
+.materia-card.desbloqueia.materia-bloqueada {
+    background-color: #e0f2fe !important;
+    border-left-color: #0284c7 !important;
+    color: #0f172a !important;
+}
+
+.materia-card.pos.materia-bloqueada {
+    background-color: #fef3c7 !important;
+    border-left-color: #d97706 !important;
+    color: #0f172a !important;
 }
 
 .progress-container {

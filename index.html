@@ -30,42 +30,12 @@
                 <label for="examploNumerodeMatricula" class="form-label text-white">Informe seu número de matrícula</label>
                 <input type="text" class="form-control" id="examploNumerodeMatricula" placeholder="Digite aqui sua matrícula">
 
-                <div class="button-enter text-center">
-                    <button type="button" onclick="validarELogar()" class="btn btn-primary w-100">Entrar</button>
-                </div>
+                <button id="btnEntrar" type="button" class="btn btn-primary w-100">
+                    Entrar
+                </button>
             </div>
         </section>
     </main>
-
-    <script>
-        function validarELogar() {
-            const inputMatricula = document.getElementById('examploNumerodeMatricula').value.trim();
-            const inputCurso = document.getElementById('curso').value;
-
-            if (inputCurso === "Selecione seu curso") {
-                alert("Por favor, selecione seu curso!");
-                return;
-            }
-
-            if (inputMatricula === "") {
-                alert("Por favor, informe seu número de matrícula!");
-                return;
-            }
-
-            localStorage.setItem('matricula_logada', inputMatricula);
-
-            if (inputCurso === "1") {
-                window.location.href = 'BSI.html';
-            } else if (inputCurso === "2") {
-                window.location.href = 'EAMB.html';
-            }
-        }
-
-        document.getElementById('examploNumerodeMatricula').addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') {
-                validarELogar();
-            }
-        });
-    </script>
+    <script src="login.js"></script>
 </body>
 </html>
