@@ -5,8 +5,18 @@ import {
   doc,
   getDoc,
   setDoc,
-  updateDoc
+  updateDoc,
+  addDoc,
+  getDocs,
+  query,
+  where
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+import {
+  getStorage,
+  ref,
+  uploadBytes,
+  getDownloadURL
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-storage.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDNM0ryNPMPX705vFdKxvBCpF8a5shefE8",
@@ -19,14 +29,23 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const storage = getStorage(app);
 
 export {
   app,
   db,
+  storage,
   firebaseConfig,
   collection,
   doc,
   getDoc,
   setDoc,
-  updateDoc
+  updateDoc,
+  addDoc,
+  getDocs,
+  query,
+  where,
+  ref,
+  uploadBytes,
+  getDownloadURL
 };
