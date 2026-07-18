@@ -12,26 +12,38 @@
     <div class="container-fluid">
         <h2 class="titulo-grade text-center mt-3">Bacharelado em Sistema de Informação</h2>
         
-        <div class="container mt-4">
-            <div class="progress-container">
-                <div class="progress-head">
-                    <span class="progress-text">Progresso do Curso</span>
-                    <div class="progress-metrics">
-                        <span class="progress-pill">concluídas: <span id="porcentagem">0%</span></span>
-                        <!--<span class="progress-pill progress-pill-secondary"><span id="porcentagem-total">0%</span>concluídas</span>-->
-                    </div>
-                </div>
-                <div class="progress-bar-bg">
-                    <div id="progresso-fill" class="progress-bar-fill"></div>
-                    <div id="progresso-cursando" class="progress-bar-fill progress-bar-fill-blue"></div>
-                </div>
-                <small class="text-white-50 d-flex flex-wrap gap-3 mt-2">
-                    <span><span id="concluidas">0</span> concluídas</span>
-                    <span><span id="cursando">0</span> cursando</span>
-                    <span><span id="total">0</span> matérias</span>
-                </small>
-            </div>
+        <div class="container mt-4 mb-4">
+    <div class="progress-markers-container position-relative">
+        
+        <!-- Marcador Verde (Concluído) -->
+        <div id="marker-concluido" class="progress-marker text-success" style="left: 0%;">
+            <span id="porc-concluido-text" class="fw-bold">0%</span>
+            <div class="marker-line bg-success"></div>
         </div>
+
+        <!-- Marcador Azul (Cursando) -->
+        <div id="marker-cursando" class="progress-marker text-primary" style="left: 0%; display: none;">
+            <span id="porc-cursando-text" class="fw-bold">0%</span>
+            <div class="marker-line bg-primary"></div>
+        </div>
+
+        <!-- A Barra em si -->
+        <div class="progress-bar-bg mt-1">
+            <div id="progresso-concluido" class="progress-fill-success"></div>
+            <div id="progresso-cursando" class="progress-fill-primary"></div>
+        </div>
+    </div>
+
+    <!-- Textos de contagem embaixo da barra -->
+    <div class="d-flex justify-content-between text-white-50 small mt-2">
+        <span>Progresso do Curso</span>
+        <span>
+            <span id="concluidas" class="text-success fw-bold">0</span> concluídas | 
+            <span id="cursando" class="text-primary fw-bold">0</span> cursando | 
+            <span id="total">0</span> total
+        </span>
+    </div>
+</div>
 
         <div class="grade-scroll">
             

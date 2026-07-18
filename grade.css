@@ -47,52 +47,7 @@ body#EAMB .materia-lock {
     color: #14532d;
 }
 
-body#EAMB .requisito {
-    background-color: #ecfccb !important;
-    border-left-color: #65a30d !important;
-}
-
-body#EAMB .desbloqueia {
-    background-color: #bbf7d0 !important;
-    border-left-color: #16a34a !important;
-}
-
-body#EAMB .pos {
-    background-color: #bfdbfe !important;
-    border-left-color: #2563eb !important;
-}
-
-body#EAMB .materia-concluida {
-    background-color: #dcfce7 !important;
-    border-left-color: #16a34a !important;
-    color: #14532d !important;
-}
-
-body#EAMB .materia-cursando {
-    background: linear-gradient(135deg, #eff6ff 0%, #bfdbfe 100%) !important;
-    border-left-color: #2563eb !important;
-    color: #0f172a !important;
-}
-
-body#EAMB .materia-bloqueada {
-    background-color: #f0fdf4 !important;
-    border-left-color: #15803d !important;
-    color: #14532d !important;
-    opacity: 0.98;
-}
-
-body#EAMB .materia-card.requisito.materia-bloqueada {
-    background-color: #fefce8 !important;
-}
-
-body#EAMB .materia-card.desbloqueia.materia-bloqueada {
-    background-color: #bbf7d0 !important;
-}
-
-body#EAMB .materia-card.pos.materia-bloqueada {
-    background-color: #bfdbfe !important;
-}
-
+/* Modal EAMB */
 body#EAMB .modal-content {
     background: rgba(6, 95, 70, 0.95);
     border: 1px solid rgba(167, 243, 208, 0.35);
@@ -116,61 +71,36 @@ body#EAMB .btn-danger {
     letter-spacing: 1px;
 }
 
+/* =========================================
+   MEDIA QUERIES (Responsividade)
+   ========================================= */
 @media (max-width: 1200px) {
-    .grade-scroll {
-        gap: 14px;
-    }
-    .semestre-coluna {
-        min-width: 230px;
-        max-width: 230px;
-    }
+    .grade-scroll { gap: 14px; }
+    .semestre-coluna { min-width: 230px; max-width: 230px; }
 }
 
 @media (max-width: 992px) {
-    .grade-scroll {
-        justify-content: center;
-        padding: 10px 14px 30px;
-    }
-    .semestre-coluna {
-        min-width: 100%;
-        max-width: 100%;
-    }
-    .materia-card {
-        font-size: 0.88rem;
-    }
-    .semestre-titulo {
-        font-size: 0.96rem;
-    }
+    .grade-scroll { justify-content: center; padding: 10px 14px 30px; }
+    .semestre-coluna { min-width: 100%; max-width: 100%; }
+    .materia-card { font-size: 0.88rem; }
+    .semestre-titulo { font-size: 0.96rem; }
 }
 
 @media (max-width: 768px) {
-    .grade-scroll {
-        padding: 8px 10px 24px;
-    }
-    .materia-card {
-        padding: 10px 12px;
-    }
-    .progress-container {
-        padding: 14px 16px;
-    }
+    .grade-scroll { padding: 8px 10px 24px; }
+    .materia-card { padding: 10px 12px; }
+    .progress-container { padding: 14px 16px; }
 }
 
 @media (max-width: 576px) {
-    .titulo-grade {
-        font-size: 1.3rem;
-        margin-top: 22px;
-    }
-    .progress-text {
-        font-size: 0.95rem;
-    }
-    .progress-bar-bg {
-        height: 10px;
-    }
-    .materia-card {
-        min-height: 54px;
-    }
+    .titulo-grade { font-size: 1.3rem; margin-top: 22px; }
+    .progress-bar-bg { height: 10px; } /* Barra mais fina no celular */
+    .materia-card { min-height: 54px; }
 }
 
+/* =========================================
+   SCROLL E ESTRUTURA DA GRADE
+   ========================================= */
 .grade-scroll {
     display: flex;
     flex-wrap: wrap;
@@ -183,19 +113,9 @@ body#EAMB .btn-danger {
     scrollbar-color: #60a5fa #0f172a;
 }
 
-.grade-scroll::-webkit-scrollbar {
-    height: 10px;
-}
-
-.grade-scroll::-webkit-scrollbar-track {
-    background: rgba(255,255,255,0.12);
-    border-radius: 999px;
-}
-
-.grade-scroll::-webkit-scrollbar-thumb {
-    background: linear-gradient(90deg, #60a5fa, #34d399);
-    border-radius: 999px;
-}
+.grade-scroll::-webkit-scrollbar { height: 10px; }
+.grade-scroll::-webkit-scrollbar-track { background: rgba(255,255,255,0.12); border-radius: 999px; }
+.grade-scroll::-webkit-scrollbar-thumb { background: linear-gradient(90deg, #60a5fa, #34d399); border-radius: 999px; }
 
 .semestre-coluna {
     min-width: 250px;
@@ -227,6 +147,9 @@ body#EAMB .btn-danger {
     gap: 10px;
 }
 
+/* =========================================
+   CARDS DAS MATÉRIAS
+   ========================================= */
 .materia-card {
     position: relative;
     background: #ffffff;
@@ -258,37 +181,11 @@ body#EAMB .btn-danger {
     width: 100%;
 }
 
-.materia-card-text {
-    line-height: 1.3;
-    flex: 1;
-}
+.materia-card-text { line-height: 1.3; flex: 1; }
+.materia-lock { position: absolute; left: 8px; top: 8px; font-size: 0.9rem; }
+.materia-prereq { position: absolute; right: 8px; bottom: 8px; color: #fbbf24; font-size: 0.9rem; }
 
-.materia-indicator {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-    border-radius: 999px;
-    font-size: 0.85rem;
-    flex-shrink: 0;
-}
-
-.materia-lock {
-    position: absolute;
-    left: 8px;
-    top: 8px;
-    font-size: 0.9rem;
-}
-
-.materia-prereq {
-    position: absolute;
-    right: 8px;
-    bottom: 8px;
-    color: #fbbf24;
-    font-size: 0.9rem;
-}
-
+/* TAGS DE CATEGORIA */
 .materia-tag {
     position: absolute;
     top: 8px;
@@ -300,7 +197,6 @@ body#EAMB .btn-danger {
     letter-spacing: 0.04em;
     color: white;
 }
-
 .materia-tag.cco { background: #2563eb; }
 .materia-tag.fco { background: #0f766e; }
 .materia-tag.mat { background: #7c3aed; }
@@ -309,6 +205,11 @@ body#EAMB .btn-danger {
 .materia-tag.acex { background: #a16207; }
 .materia-tag.tcc { background: #dc2626; }
 .materia-tag.opt { background: #059669; }
+
+/* =========================================
+   ESTADOS DAS MATÉRIAS (Hover / Concluída / etc)
+   ========================================= */
+.materia-focada { border-left-color: #2563eb !important; }
 
 .requisito {
     background-color: #fff7d6 !important;
@@ -321,10 +222,17 @@ body#EAMB .btn-danger {
     border-left-color: #0284c7 !important;
 }
 
+.pos {
+    background-color: #fef3c7 !important;
+    border-left-color: #d97706 !important;
+}
+
 .materia-concluida {
     background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%) !important;
     border-left-color: #16a34a !important;
-    color: #14532d !important;
+    color: #166534 !important;
+    text-decoration: line-through;
+    opacity: 0.92;
     box-shadow: 0 12px 24px rgba(22, 163, 74, 0.16);
 }
 
@@ -336,137 +244,77 @@ body#EAMB .btn-danger {
 }
 
 .materia-bloqueada {
-    background-color: #f8fafc !important;
-    border-left-color: #94a3b8 !important;
-    color: #475569 !important;
-    opacity: 0.98;
-}
-
-.progress-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 10px;
-    flex-wrap: wrap;
-}
-
-.progress-metrics {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-}
-
-.progress-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 4px 10px;
-    border-radius: 999px;
-    background: rgba(255,255,255,0.16);
-    color: #f8fafc;
-    font-size: 0.82rem;
-    font-weight: 600;
-}
-
-.progress-pill-secondary {
-    background: rgba(255,255,255,0.10);
-}
-
-.progress-bar-bg {
-    position: relative;
-    overflow: hidden;
-}
-
-.progress-bar-fill {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 0%;
-    border-radius: 999px;
-    background: linear-gradient(90deg, #34d399 0%, #16a34a 100%);
-    transition: width 0.25s ease, left 0.25s ease;
-}
-
-.progress-bar-fill-blue {
-    left: 0;
-    background: linear-gradient(90deg, #38bdf8 0%, #0ea5e9 100%);
-    z-index: 1;
-}
-
-.pos {
-    background-color: #fef3c7 !important;
-    border-left-color: #d97706 !important;
-}
-
-.materia-focada {
-    border-left-color: #2563eb !important;
-}
-
-.materia-concluida {
-    background-color: #dcfce7 !important;
-    border-left-color: #16a34a !important;
-    color: #166534 !important;
-    text-decoration: line-through;
-    opacity: 0.92;
-}
-
-.materia-bloqueada {
     background-color: #fef2f2 !important;
     border-left-color: #dc2626 !important;
     color: #991b1b !important;
     opacity: 0.95;
 }
 
-.materia-card.requisito.materia-bloqueada {
-    background-color: #fff7d6 !important;
-    border-left-color: #f59e0b !important;
-    color: #0f172a !important;
-}
+/* Tratamento de Hover para matérias que ainda estão bloqueadas */
+.materia-card.requisito.materia-bloqueada { background-color: #fff7d6 !important; border-left-color: #f59e0b !important; color: #0f172a !important; }
+.materia-card.desbloqueia.materia-bloqueada { background-color: #e0f2fe !important; border-left-color: #0284c7 !important; color: #0f172a !important; }
+.materia-card.pos.materia-bloqueada { background-color: #fef3c7 !important; border-left-color: #d97706 !important; color: #0f172a !important; }
 
-.materia-card.desbloqueia.materia-bloqueada {
-    background-color: #e0f2fe !important;
-    border-left-color: #0284c7 !important;
-    color: #0f172a !important;
-}
 
-.materia-card.pos.materia-bloqueada {
-    background-color: #fef3c7 !important;
-    border-left-color: #d97706 !important;
-    color: #0f172a !important;
-}
+/* =========================================
+   NOVA BARRA DE PROGRESSO (Stacked Bar com Marcadores)
+   ========================================= */
 
 .progress-container {
     background: rgba(255, 255, 255, 0.14);
-    padding: 16px 20px;
+    padding: 16px 20px 24px; /* Mais padding embaixo para os textos */
     border-radius: 16px;
     margin-bottom: 20px;
-    text-align: center;
     border: 1px solid rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(8px);
 }
 
-.progress-text {
-    color: white;
-    font-weight: 700;
-    display: block;
-    margin-bottom: 10px;
+/* Espaço extra em cima para os marcadores flutuantes caberem */
+.progress-markers-container {
+    padding-top: 30px; 
+    margin-bottom: 8px;
 }
 
+/* O "Trilho" onde as barras coloridas correm */
 .progress-bar-bg {
-    background-color: rgba(15,23,42,0.35);
-    border-radius: 999px;
-    height: 12px;
     width: 100%;
+    height: 14px;
+    background-color: rgba(15, 23, 42, 0.35); 
+    border-radius: 999px;
+    display: flex; /* Empilha as barras lado a lado sem sobreposição */
     overflow: hidden;
     margin-bottom: 6px;
 }
 
-.progress-bar-fill {
-    background: linear-gradient(90deg, #22c55e, #86efac);
+/* Preenchimentos Individuais */
+.progress-fill-success {
     height: 100%;
-    width: 0%;
-    transition: width 0.4s ease-in-out;
-    box-shadow: 0 0 12px rgba(34, 197, 94, 0.35);
+    background: linear-gradient(90deg, #34d399 0%, #16a34a 100%);
+    transition: width 0.5s ease-in-out;
+}
+
+.progress-fill-primary {
+    height: 100%;
+    background: linear-gradient(90deg, #38bdf8 0%, #0ea5e9 100%);
+    transition: width 0.5s ease-in-out;
+}
+
+/* Estilo do Marcador Flutuante (Texto % e a linha) */
+.progress-marker {
+    position: absolute;
+    bottom: 14px; /* Grudado no topo da barra */
+    transform: translateX(-50%); /* Garante que fique exatamente no meio do corte */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: left 0.5s ease-in-out;
+    z-index: 10;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5); /* Melhora leitura em cima das cores */
+}
+
+.marker-line {
+    width: 2px;
+    height: 8px;
+    margin-top: 2px;
+    border-radius: 2px;
 }

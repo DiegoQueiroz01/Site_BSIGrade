@@ -335,6 +335,8 @@ function atualizarEstadoMateria(materia) {
     }
 }
 
+// ... (mantenha todo o seu código anterior de categorias e configurações Firebase)
+
 function atualizarInterface() {
     let concluidas = 0;
     let cursando = 0;
@@ -346,23 +348,48 @@ function atualizarInterface() {
         if (estado.cursando) cursando += 1;
     });
 
-    const percentualEstimado = totalMaterias > 0 ? Math.round(((concluidas + cursando) / totalMaterias) * 100) : 0;
+    // --- NOVA LÓGICA DAS BARRAS EMPILHADAS (Baseada no seu desenho) ---
+    if (totalMaterias > 0) {
+        // 1. Cálculos de Porcentagem
+        const percConcluido = (concluidas / totalMaterias) * 100;
+        const percCursando = (cursando / totalMaterias) * 100;
+        const percTotalProjetado = percConcluido + percCursando; // Aonde a barra azul termina
 
-    const elPorc = document.getElementById('porcentagem');
-    const elBarra = document.getElementById('progresso-fill');
+        // 2. Seleção dos Elementos HTML
+        const barraConcluido = document.getElementById('progresso-concluido');
+        const barraCursando = document.getElementById('progresso-cursando');
+        const markerConcluido = document.getElementById('marker-concluido');
+        const markerCursando = document.getElementById('marker-cursando');
+        
+        // 3. Preenchendo as larguras das barras
+        if (barraConcluido) barraConcluido.style.width = percConcluido + '%';
+        if (barraCursando) barraCursando.style.width = percCursando + '%';
+
+        // 4. Atualizando o Marcador Verde (Sempre visível)
+        if (markerConcluido) {
+            document.getElementById('porc-concluido-text').innerText = Math.round(percConcluido) + '%';
+            markerConcluido.style.left = percConcluido + '%';
+        }
+
+        // 5. Atualizando o Marcador Azul (Só aparece se tiver matéria cursando)
+        if (markerCursando) {
+            if (cursando > 0) {
+                markerCursando.style.display = 'flex';
+                // O texto exibe onde o aluno vai parar, ex: 50%
+                document.getElementById('porc-cursando-text').innerText = Math.round(percTotalProjetado) + '%'; 
+                // A posição no trilho é a soma das duas larguras
+                markerCursando.style.left = percTotalProjetado + '%'; 
+            } else {
+                markerCursando.style.display = 'none';
+            }
+        }
+    }
+
+    // --- Atualizando os textos de baixo ---
     const elConcluidas = document.getElementById('concluidas');
     const elCursando = document.getElementById('cursando');
     const elTotal = document.getElementById('total');
 
-    if (elPorc) elPorc.innerText = percentualEstimado + '%';
-    if (elBarra) {
-        elBarra.style.width = percentualEstimado + '%';
-        if (cursando > 0) {
-            elBarra.style.background = 'linear-gradient(90deg, #38bdf8 0%, #0ea5e9 100%)';
-        } else {
-            elBarra.style.background = 'linear-gradient(90deg, #34d399 0%, #16a34a 100%)';
-        }
-    }
     if (elConcluidas) elConcluidas.innerText = concluidas;
     if (elCursando) elCursando.innerText = cursando;
     if (elTotal) elTotal.innerText = totalMaterias;
@@ -370,6 +397,8 @@ function atualizarInterface() {
     sincronizarVetores();
     salvarEstadoLocal();
 }
+
+// ... (mantenha o restante do seu código intacto daqui para baixo)
 
 function renderizarRepositorio(materiaId) {
     const listaUI = document.getElementById('listaRepositorio');
@@ -411,17 +440,37 @@ async function carregarRepositorioDoFirestore() {
     }
 }
 
-async function enviarArquivoRepositorio(arquivo) {
-    if (!idMateriaFoco || !arquivo) return;
+async function enviarArquivoRepositorio(arquivoParam = null) {
+    // Busca o input pelo ID que você já usa no final do seu código
+    const inputElement = document.getElementById('inputArquivoRepositorio');
+    
+    // Se o arquivo não veio por parâmetro, tenta pegar do input
+    const arquivo = arquivoParam || (inputElement ? inputElement.files[0] : null);
+
+    if (!idMateriaFoco) {
+        console.error('Nenhuma matéria focada no momento.');
+        return;
+    }
+
+    if (!arquivo) {
+        alert('Por favor, selecione um arquivo antes de clicar em enviar.');
+        return;
+    }
+
     if (!storage || !storageRefFn || !uploadBytesFn || !getDownloadURLFn || !db || !collectionFn || !addDocFn) {
         alert('O Firebase Storage não está disponível no momento.');
         return;
     }
 
     try {
+        // Desabilita o botão para evitar cliques duplos durante o upload
+        const btnEnviar = document.querySelector('#modal-repositorio-btn-enviar'); // Ajuste o ID se necessário
+        if (btnEnviar) btnEnviar.disabled = true;
+
         const nomeArquivo = `${Date.now()}_${arquivo.name.replace(/\s+/g, '_')}`;
         const caminho = `repositorio/${getCursoKey()}/${idMateriaFoco}/${nomeArquivo}`;
         const arquivoRef = storageRefFn(storage, caminho);
+        
         await uploadBytesFn(arquivoRef, arquivo);
         const url = await getDownloadURLFn(arquivoRef);
 
@@ -430,18 +479,22 @@ async function enviarArquivoRepositorio(arquivo) {
             curso: getCursoKey(),
             nome: arquivo.name,
             url,
-            uploadedBy: matriculaAtiva,
+            uploadedBy: matriculaAtiva || 'anonimo', // Garantia caso a matrícula falhe
             uploadedAt: new Date().toISOString()
         });
 
-        const inputArquivo = document.getElementById('inputArquivoRepositorio');
-        if (inputArquivo) inputArquivo.value = '';
+        if (inputElement) inputElement.value = '';
 
         await carregarRepositorioDoFirestore();
         alert('Arquivo enviado com sucesso para o repositório compartilhado.');
+        
     } catch (error) {
         console.error('Erro ao enviar arquivo:', error);
-        alert('Não foi possível enviar o arquivo no momento.');
+        alert(`Não foi possível enviar o arquivo no momento. Erro: ${error.message}`);
+    } finally {
+        // Reabilita o botão
+        const btnEnviar = document.querySelector('#modal-repositorio-btn-enviar');
+        if (btnEnviar) btnEnviar.disabled = false;
     }
 }
 
